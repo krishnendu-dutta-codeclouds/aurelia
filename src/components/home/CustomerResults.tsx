@@ -133,7 +133,7 @@ export default function CustomerResults() {
               {/* BEFORE – desaturated/dimmed with CSS filter */}
               <div className="absolute inset-0 w-full h-full">
                 <Image
-                  src="/images/skin_glowing.png"
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/skin_glowing.png`}
                   alt="Skin Before Aurelia Treatment"
                   fill
                   className="object-cover object-center pointer-events-none"
@@ -154,7 +154,7 @@ export default function CustomerResults() {
                 style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
               >
                 <Image
-                  src="/images/skin_glowing.png"
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/skin_glowing.png`}
                   alt="Skin After 14 Days Aurelia Treatment"
                   fill
                   className="object-cover object-center pointer-events-none"

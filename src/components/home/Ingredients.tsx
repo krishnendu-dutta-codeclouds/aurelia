@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { FlaskConical, Leaf, Heart, Sun, Activity, Zap } from "lucide-react";
+import { FlaskConical, Leaf, Heart, Sun, Activity, Zap, LucideIcon } from "lucide-react";
 
 interface Ingredient {
   id: string;
@@ -11,7 +11,7 @@ interface Ingredient {
   concentration: string;
   benefits: string[];
   description: string;
-  icon: any;
+  icon: LucideIcon;
   color: string;
   illustration: string;
 }

@@ -148,7 +148,7 @@ function ProductCard({ prod }: { prod: Product }) {
                 style={{ width: `${100 / prod.images.length}%` }}
               >
                 <Image
-                  src={img.src}
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${img.src}`}
                   alt={img.alt}
                   fill
                   className="object-cover p-2"

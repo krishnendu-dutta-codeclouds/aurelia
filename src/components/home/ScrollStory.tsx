@@ -204,7 +204,7 @@ export default function ScrollStory() {
             {/* Beauty model image */}
             <div className="relative w-full h-[65vh] rounded-4xl overflow-hidden border border-cream/50 shadow-md">
               <Image
-                src="/images/skin_glowing.png"
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/skin_glowing.png`}
                 alt="Smiling model showcasing moisturised glowing skin"
                 fill
                 className="object-cover"

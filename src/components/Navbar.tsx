@@ -3,11 +3,7 @@
 import { useState, useEffect } from "react";
 import { Search, ShoppingBag, Menu, X, ArrowRight, Heart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-
-interface SubCategory {
-  name: string;
-  href: string;
-}
+import Image from "next/image";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -199,10 +195,11 @@ export default function Navbar() {
                 {/* Featured item column */}
                 <div className="col-span-4 bg-warm-white rounded-2xl p-5 border border-cream/50 flex gap-4 items-center">
                   <div className="relative w-24 h-24 bg-white rounded-xl overflow-hidden border border-cream shrink-0">
-                    <img
-                      src="/images/lip_red.png"
+                    <Image
+                      src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/lip_red.png`}
                       alt="Featured lipstick Release"
-                      className="object-cover w-full h-full p-1"
+                      fill
+                      className="object-cover p-1"
                     />
                   </div>
                   <div className="flex flex-col items-start text-left">

@@ -122,7 +122,7 @@ export default function FeaturedProducts() {
               <div>
                 <div className="relative w-full aspect-[4/5] bg-white rounded-2xl overflow-hidden mb-6 flex items-center justify-center border border-cream/20">
                   <Image
-                    src={item.image}
+                    src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${item.image}`}
                     alt={item.name}
                     fill
                     className="object-cover p-2 transition-transform duration-700 group-hover:scale-105"

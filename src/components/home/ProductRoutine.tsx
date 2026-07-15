@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon, ArrowRight, ShieldCheck, RefreshCw, Zap } from "lucide-react";
+import { Sun, Moon, ArrowRight, ShieldCheck, RefreshCw, Zap, LucideIcon } from "lucide-react";
 import Image from "next/image";
 
 interface RoutineStep {
@@ -12,7 +12,7 @@ interface RoutineStep {
   description: string;
   image: string;
   activeIngredient: string;
-  icon: any;
+  icon: LucideIcon;
 }
 
 export default function ProductRoutine() {
@@ -157,7 +157,7 @@ export default function ProductRoutine() {
                   {/* Step Image */}
                   <div className="relative w-48 h-48 bg-warm-white rounded-full overflow-hidden mb-8 border border-cream/50 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform duration-500">
                     <Image
-                      src={step.image}
+                      src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${step.image}`}
                       alt={step.product}
                       fill
                       className="object-cover p-4"

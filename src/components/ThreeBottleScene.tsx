@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo, useCallback, useEffect, useState, Suspense } from "react";
+import { useRef, useEffect, useState, Suspense } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Center, Environment, Float } from "@react-three/drei";
 import * as THREE from "three";
@@ -71,6 +71,7 @@ function SkincareBottle({ scrollY = 0 }: { scrollY: number }) {
     const texture = new THREE.CanvasTexture(canvas);
     texture.colorSpace = THREE.SRGBColorSpace;
     texture.needsUpdate = true;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setLabelTexture(texture);
 
     return () => {
@@ -216,8 +217,12 @@ function SkincareBottle({ scrollY = 0 }: { scrollY: number }) {
 // Lightweight botanical particle system
 function Particles({ count = 60 }) {
   const pointsRef = useRef<THREE.Points>(null);
+  const [particleData, setParticleData] = useState<{
+    positions: Float32Array;
+    speeds: Float32Array;
+  } | null>(null);
 
-  const [positions, speeds] = useMemo(() => {
+  useEffect(() => {
     const pos = new Float32Array(count * 3);
     const sp = new Float32Array(count);
     for (let i = 0; i < count; i++) {
@@ -226,25 +231,28 @@ function Particles({ count = 60 }) {
       pos[i * 3 + 2] = (Math.random() - 0.5) * 8;
       sp[i] = 0.008 + Math.random() * 0.012;
     }
-    return [pos, sp];
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setParticleData({ positions: pos, speeds: sp });
   }, [count]);
 
   useFrame(() => {
-    if (!pointsRef.current) return;
+    if (!pointsRef.current || !particleData) return;
     const arr = pointsRef.current.geometry.attributes.position
       .array as Float32Array;
     for (let i = 0; i < count; i++) {
-      arr[i * 3 + 1] -= speeds[i]; // Bug fix: was 'sp' — variable is named 'speeds'
+      arr[i * 3 + 1] -= particleData.speeds[i];
       if (arr[i * 3 + 1] < -4) arr[i * 3 + 1] = 4;
       arr[i * 3] += Math.sin(arr[i * 3 + 1] + i) * 0.002;
     }
     pointsRef.current.geometry.attributes.position.needsUpdate = true;
   });
 
+  if (!particleData) return null;
+
   return (
     <points ref={pointsRef}>
       <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+        <bufferAttribute attach="attributes-position" args={[particleData.positions, 3]} />
       </bufferGeometry>
       <pointsMaterial
         color="#8F9779"
@@ -256,6 +264,7 @@ function Particles({ count = 60 }) {
     </points>
   );
 }
+
 
 // Helper to auto-restore WebGL context on crash / GPU switching
 function WebGLContextHandler() {

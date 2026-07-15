@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 
 interface FormInputs {
@@ -13,7 +12,7 @@ export default function Newsletter() {
   const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
   const { register, handleSubmit, formState: { errors }, reset } = useForm<FormInputs>();
 
-  const onSubmit = async (data: FormInputs) => {
+  const onSubmit = async () => {
     setStatus("loading");
     // Simulate API registration delay
     await new Promise((resolve) => setTimeout(resolve, 1500));
