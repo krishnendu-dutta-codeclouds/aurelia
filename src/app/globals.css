@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: var(--font-cormorant), serif;
+  --font-sans: var(--font-inter), sans-serif;
+  
+  --color-warm-white: #FAFAF8;
+  --color-cream: #FAF5EF;
+  --color-ivory: #FCF9F2;
+  --color-champagne: #F6EFE2;
+  --color-soft-beige: #F2ECE1;
+  --color-peach: #FFF0E5;
+  --color-soft-pink: #FFF0F5;
+  --color-mint: #EBF2EE;
+  
+  --color-sage: #8F9779;
+  --color-olive: #6C7A52;
+  --color-rose-gold: #B76E79;
+  --color-champagne-gold: #D4AF37;
+  --color-muted-coral: #E07A5F;
+  
+  --color-text-title: #111111;
+  --color-text-body: #444444;
+  --color-text-meta: #666666;
+  
+  /* Additional color mappings for Tailwind classes */
+  --color-text-sage: #8F9779;
+}
+
+@supports (background: linear-gradient(to right, white, black)) {
+  /* Support for linear gradients */
+}
+
+:root {
+  --background: #FFFFFF;
+  --foreground: #111111;
+}
+
+/* Light mode only — no dark backgrounds anywhere */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  letter-spacing: -0.02em;
+}
+
+p, span, button, a, input, textarea {
+  font-family: var(--font-sans);
+}
+
+
+
+/* ─── Marquee ───────────────────────────────────────────────────────────
+   Both copies of the badge list live in ONE flex container (.animate-marquee).
+   Total flex-row width = 2× the content width.
+   translateX(-50%) shifts exactly one copy-width → seamless loop.
+───────────────────────────────────────────────────────────────────────── */
+@keyframes marquee {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;          /* grows to fit both copies */
+  animation: marquee 28s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Performance: GPU-accelerate commonly animated elements */
+.will-change-transform {
+  will-change: transform;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FAFAF8;
+}
+::-webkit-scrollbar-thumb {
+  background: #E5E5E0;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D1D1CB;
+}
