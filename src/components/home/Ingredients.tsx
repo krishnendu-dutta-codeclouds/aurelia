@@ -89,7 +89,7 @@ export default function Ingredients() {
   ];
 
   return (
-    <section id="ingredients" className="py-32 bg-warm-white relative overflow-hidden">
+    <section id="ingredients" className="py-16 md:py-32 bg-warm-white relative overflow-hidden">
       {/* Editorial Decorative Background */}
       <div className="absolute top-[20%] right-[-10%] w-[40%] h-[40%] rounded-full bg-gradient-to-tr from-mint/20 to-peach/10 blur-[100px] pointer-events-none" />
       <div className="absolute bottom-[10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-gradient-to-br from-cream to-soft-pink/15 blur-[100px] pointer-events-none" />
@@ -97,13 +97,13 @@ export default function Ingredients() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Header */}
-        <div className="max-w-3xl mb-24">
-          <p className="text-xs font-semibold uppercase tracking-widest text-sage mb-4">Bio-Active Ingredients</p>
-          <h2 className="text-4xl md:text-6xl font-serif font-light text-text-title mb-6 leading-tight">
+        <div className="max-w-3xl mb-10 md:mb-24">
+          <p className="text-xs font-semibold uppercase tracking-widest text-sage mb-3 md:mb-4">Bio-Active Ingredients</p>
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-serif font-light text-text-title mb-4 md:mb-6 leading-tight">
             Scientific Purity. <br />
             <span className="italic font-normal text-sage">Proven Dermatological Efficacy.</span>
           </h2>
-          <p className="text-text-body font-light max-w-xl leading-relaxed">
+          <p className="text-sm md:text-base text-text-body font-light max-w-xl leading-relaxed">
             Every molecule serves a precise cellular function. We formulate with clean, active botanicals at optimized concentrations to guarantee visible restoration.
           </p>
         </div>

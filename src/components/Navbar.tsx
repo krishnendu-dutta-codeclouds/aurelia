@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Search, ShoppingBag, Menu, X, ArrowRight, Heart } from "lucide-react";
+import { Search, Menu, X, ArrowRight, Heart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import ShoppingBagIcon from "@/components/icons/ShoppingBagIcon";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -53,15 +54,19 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         onMouseLeave={() => setShopOpen(false)}
-        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[94%] max-w-7xl rounded-4xl z-40 transition-all duration-500 border ${scrolled || shopOpen
-            ? "bg-white/95 backdrop-blur-md shadow-[0_12px_40px_rgba(0,0,0,0.03)] border-cream py-2 px-6"
-            : "bg-transparent border-transparent py-5 px-8"
-          }`}
+        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[94%] max-w-7xl rounded-4xl z-40 transition-all duration-500 border bg-white/95 backdrop-blur-md border-cream px-6 ${scrolled || shopOpen ? "shadow-[0_12px_40px_rgba(0,0,0,0.06)] py-2" : "shadow-[0_4px_24px_rgba(0,0,0,0.04)] py-3"}`}
       >
         <div className="flex items-center justify-between w-full relative z-20">
-          {/* Logo (AURELIA in serif style) */}
-          <a href="#" className="font-serif text-2xl font-bold tracking-widest text-text-title hover:opacity-85 transition-opacity shrink-0">
-            AURELIA
+          {/* Logo (AURELIA logo image) */}
+          <a href="#" className="hover:opacity-85 transition-opacity shrink-0 flex items-center">
+            <Image
+              src="/logo.png"
+              alt="Aurelia Logo"
+              width={140}
+              height={25}
+              priority
+              className="h-6 w-auto object-contain"
+            />
           </a>
 
           {/* Desktop Navigation Links */}
@@ -70,8 +75,7 @@ export default function Navbar() {
               onMouseEnter={() => setShopOpen(true)}
               className="py-3 cursor-pointer"
             >
-              <span className={`text-xs font-bold uppercase tracking-widest transition-colors duration-300 relative py-1 ${shopOpen ? "text-sage" : "text-text-body hover:text-sage"
-                }`}>
+              <span className={`text-xs font-bold uppercase tracking-widest transition-colors duration-300 relative py-1 ${shopOpen ? "text-sage" : "text-text-body hover:text-sage"}`}>
                 SHOP
                 <motion.span
                   className="absolute bottom-0 left-0 w-full h-px bg-sage origin-left"
@@ -127,7 +131,7 @@ export default function Navbar() {
 
             {/* Shopping Bag Button */}
             <button className="relative p-2 text-text-title hover:text-sage transition-colors">
-              <ShoppingBag className="w-5 h-5 stroke-[1.5]" />
+              <ShoppingBagIcon className="w-5 h-5" strokeWidth={1.5} />
               <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-rose-gold rounded-full" />
             </button>
 

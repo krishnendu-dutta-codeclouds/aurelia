@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowUp } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   const handleScrollToTop = () => {
@@ -53,8 +54,6 @@ export default function Footer() {
       title: "BIO-SCIENCE",
       links: [
         { label: "Ingredients Archive", href: "#ingredients" },
-        { label: "Cellular Healing Study", href: "#science" },
-        { label: "Clinical Test Results", href: "#science" },
         { label: "Safety Thresholds", href: "#ingredients" },
       ],
     },
@@ -79,7 +78,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-cream/45 border-t border-soft-beige pt-24 pb-12 relative overflow-hidden">
+    <footer className="bg-cream/45 border-t border-soft-beige pt-12 md:pt-24 pb-8 md:pb-12 relative overflow-hidden">
       
       {/* Background soft gradients */}
       <div className="absolute bottom-0 right-[-10%] w-[40%] h-[40%] rounded-full bg-gradient-to-tr from-mint/15 to-transparent blur-[100px] pointer-events-none" />
@@ -88,12 +87,18 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Main Columns Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-12 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 md:gap-12 mb-12 md:mb-20">
           
           {/* Logo & Brand Details Column */}
-          <div className="col-span-2 flex flex-col items-start pr-0 md:pr-12">
-            <a href="#" className="font-serif text-3xl font-semibold tracking-widest text-text-title mb-6">
-              AURELIA
+          <div className="col-span-1 sm:col-span-2 flex flex-col items-start pr-0 md:pr-12">
+            <a href="#" className="mb-6 hover:opacity-85 transition-opacity block">
+              <Image
+                src="/logo.png"
+                alt="Aurelia Logo"
+                width={167}
+                height={30}
+                className="h-8 w-auto object-contain"
+              />
             </a>
             <p className="text-sm text-text-body font-light leading-relaxed mb-8 max-w-sm">
               Formulated with bio-active botanical compounds. Restoring dermal radiance through clinical precision.

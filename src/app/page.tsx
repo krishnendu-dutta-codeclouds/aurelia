@@ -4,7 +4,6 @@ import Hero from "@/components/home/Hero";
 import ScrollStory from "@/components/home/ScrollStory";
 import Ingredients from "@/components/home/Ingredients";
 import ProductCollection from "@/components/home/ProductCollection";
-import Science from "@/components/home/Science";
 import CustomerResults from "@/components/home/CustomerResults";
 import ProductRoutine from "@/components/home/ProductRoutine";
 import Sustainability from "@/components/home/Sustainability";
@@ -16,7 +15,7 @@ export default function Home() {
   // Bug fix: scrollY was tracked here and passed to Hero, causing ALL 11 sections
   // to re-render on every scroll event. Hero now manages its own scroll internally.
   return (
-    <main className="flex flex-col flex-1 w-full relative">
+    <main className="flex-1 w-full relative">
       {/* 4.1 Hero Section */}
       <Hero />
 
@@ -29,8 +28,7 @@ export default function Home() {
       {/* 4.4 Product Collection Section */}
       <ProductCollection />
 
-      {/* 4.5 Science & Clinical Data Section */}
-      <Science />
+
 
       {/* 4.6 Customer Results Before/After Slider */}
       <CustomerResults />

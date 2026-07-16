@@ -21,18 +21,18 @@ export default function Newsletter() {
   };
 
   return (
-    <section className="py-32 bg-cream/60 relative overflow-hidden border-t border-soft-beige">
+    <section className="py-16 md:py-32 bg-cream/60 relative overflow-hidden border-t border-soft-beige">
       {/* Background glowing gradients */}
       <div className="absolute top-[20%] left-[-10%] w-[45%] h-[45%] rounded-full bg-gradient-to-tr from-peach/15 to-transparent blur-[100px] pointer-events-none" />
       <div className="absolute bottom-[20%] right-[-10%] w-[45%] h-[45%] rounded-full bg-gradient-to-br from-mint/20 to-transparent blur-[100px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-        <p className="text-xs font-semibold uppercase tracking-widest text-sage mb-4">Aurelia Journal</p>
-        <h2 className="text-4xl md:text-6xl font-serif font-light text-text-title mb-6 leading-tight">
+        <p className="text-xs font-semibold uppercase tracking-widest text-sage mb-3 md:mb-4">Aurelia Journal</p>
+        <h2 className="text-3xl sm:text-4xl md:text-6xl font-serif font-light text-text-title mb-4 md:mb-6 leading-tight">
           Subscribe to <br />
           <span className="italic font-normal text-sage">Botanical Chronicles</span>
         </h2>
-        <p className="text-text-body font-light max-w-xl mx-auto leading-relaxed mb-12">
+        <p className="text-sm text-text-body font-light max-w-xl mx-auto leading-relaxed mb-8 md:mb-12">
           Receive exclusive previews of new bio-active formulations, scientific dermal studies, and seasonal skin routine guidelines.
         </p>
 
