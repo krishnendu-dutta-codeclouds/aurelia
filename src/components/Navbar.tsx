@@ -60,7 +60,7 @@ export default function Navbar() {
           {/* Logo (AURELIA logo image) */}
           <a href="#" className="hover:opacity-85 transition-opacity shrink-0 flex items-center">
             <Image
-              src="/logo.png"
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logo.png`}
               alt="Aurelia Logo"
               width={140}
               height={25}

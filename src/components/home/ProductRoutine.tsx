@@ -140,7 +140,7 @@ export default function ProductRoutine() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 relative">
           
           {/* Connecting line for timeline */}
-          <div className="hidden lg:block absolute top-[150px] left-[15%] right-[15%] h-px bg-black/5 -z-10" />
+          <div className="hidden lg:block absolute top-[130px] left-[15%] right-[15%] h-px bg-black/5 -z-10" />
 
           <AnimatePresence mode="wait">
             {activeSteps.map((step, index) => {
@@ -155,12 +155,12 @@ export default function ProductRoutine() {
                   className="flex flex-col items-center text-center group"
                 >
                   {/* Step Image */}
-                  <div className="relative w-48 h-48 bg-warm-white rounded-full overflow-hidden mb-8 border border-cream/50 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform duration-500">
+                  <div className="relative w-full h-[260px] bg-warm-white rounded-[32px] overflow-hidden mb-8 border border-cream/50 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform duration-500">
                     <Image
                       src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${step.image}`}
                       alt={step.product}
                       fill
-                      className="object-cover p-4"
+                      className="object-cover p-0"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                     

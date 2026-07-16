@@ -31,9 +31,10 @@ export default function Hero() {
     const images: HTMLImageElement[] = [];
 
     // Preload all frames
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
     for (let i = 0; i < frameCount; i++) {
       const img = new window.Image();
-      img.src = `/video-frames/frame_${String(i).padStart(3, "0")}.jpg`;
+      img.src = `${basePath}/video-frames/frame_${String(i).padStart(3, "0")}.jpg`;
       images.push(img);
     }
 

@@ -93,7 +93,7 @@ export default function Footer() {
           <div className="col-span-1 sm:col-span-2 flex flex-col items-start pr-0 md:pr-12">
             <a href="#" className="mb-6 hover:opacity-85 transition-opacity block">
               <Image
-                src="/logo.png"
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logo.png`}
                 alt="Aurelia Logo"
                 width={167}
                 height={30}

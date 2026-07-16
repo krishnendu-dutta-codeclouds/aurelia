@@ -69,7 +69,7 @@ export default function PageLoader() {
       {/* Logo */}
       <div className="relative mb-10 select-none">
         <Image
-          src="/logo.png"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logo.png`}
           alt="Aurelia"
           width={160}
           height={60}
