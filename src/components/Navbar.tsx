@@ -54,7 +54,7 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         onMouseLeave={() => setShopOpen(false)}
-        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[94%] max-w-7xl rounded-4xl z-40 transition-all duration-500 border bg-white/95 backdrop-blur-md border-cream px-6 ${scrolled || shopOpen ? "shadow-[0_12px_40px_rgba(0,0,0,0.06)] py-2" : "shadow-[0_4px_24px_rgba(0,0,0,0.04)] py-3"}`}
+        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[94%] max-w-7xl rounded-4xl z-40 transition-all duration-500 border bg-white/95 backdrop-blur-md border-cream px-6 ${scrolled || shopOpen ? "shadow-[0_12px_40px_rgba(0,0,0,0.06)] py-2" : "shadow-[0_4px_24px_rgba(0,0,0,0.04)] py-2"}`}
       >
         <div className="flex items-center justify-between w-full relative z-20">
           {/* Logo (AURELIA logo image) */}
