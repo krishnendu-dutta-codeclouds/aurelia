@@ -27,7 +27,7 @@ export default function Hero() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const frameCount = 230;
+    const frameCount = 160;
     const images: HTMLImageElement[] = [];
 
     // Preload all frames
@@ -81,6 +81,8 @@ export default function Hero() {
       }
     }
 
+    let hasScrolledToNext = false;
+
     // GSAP ScrollTrigger Timeline
     const scrubObject = { frame: 0 };
     const tl = gsap.timeline({
@@ -88,7 +90,7 @@ export default function Hero() {
         trigger: sectionRef.current,
         start: "top top",
         end: () => `+=${window.innerHeight * 3}`, // Spans exactly 3 viewport heights
-        scrub: 1.5,    // Smooth scrub to absorb quick scroll jumps
+        scrub: 1.0,    // Responsive scrub
         pin: true,     // Pin the hero section
         anticipatePin: 1,
         invalidateOnRefresh: true,
@@ -96,6 +98,18 @@ export default function Hero() {
           const currentImg = images[Math.round(scrubObject.frame)];
           if (currentImg && currentImg.complete && currentImg.naturalWidth > 0) {
             drawFrame(currentImg);
+          }
+        },
+        onLeave: () => {
+          const nextSec = document.getElementById("story");
+          if (nextSec) {
+            // @ts-ignore
+            if (window.lenis && typeof window.lenis.scrollTo === "function") {
+              // @ts-ignore
+              window.lenis.scrollTo(nextSec, { duration: 1.2 });
+            } else {
+              nextSec.scrollIntoView({ behavior: "smooth" });
+            }
           }
         }
       }
@@ -107,13 +121,34 @@ export default function Hero() {
       snap: "frame",
       ease: "none",
       onUpdate: () => {
-        const currentImg = images[Math.round(scrubObject.frame)];
+        const currentFrame = Math.round(scrubObject.frame);
+        const currentImg = images[currentFrame];
         if (currentImg) {
           if (currentImg.complete && currentImg.naturalWidth > 0) {
             drawFrame(currentImg);
           } else {
             currentImg.onload = () => drawFrame(currentImg);
           }
+        }
+
+        // If we reached the last frame while scrolling down, transition immediately
+        if (currentFrame === frameCount - 1) {
+          const isScrollingDown = tl.scrollTrigger && tl.scrollTrigger.direction === 1;
+          if (isScrollingDown && !hasScrolledToNext) {
+            hasScrolledToNext = true;
+            const nextSec = document.getElementById("story");
+            if (nextSec) {
+              // @ts-ignore
+              if (window.lenis && typeof window.lenis.scrollTo === "function") {
+                // @ts-ignore
+                window.lenis.scrollTo(nextSec, { duration: 1.2 });
+              } else {
+                nextSec.scrollIntoView({ behavior: "smooth" });
+              }
+            }
+          }
+        } else {
+          hasScrolledToNext = false;
         }
       }
     }, 0);
@@ -135,9 +170,9 @@ export default function Hero() {
 
 
     // 4. Fade out background canvas quickly starting at 75% of scrub progress
-    if (canvasRef.current) {
-      tl.to(canvasRef.current, { opacity: 0, ease: "power3.in", duration: 0.2 }, 0.75);
-    }
+    // if (canvasRef.current) {
+    //   tl.to(canvasRef.current, { opacity: 0, ease: "power3.in", duration: 0.2 }, 0.75);
+    // }
 
     // Re-draw on window resize
     const handleResize = () => {
