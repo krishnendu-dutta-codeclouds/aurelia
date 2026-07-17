@@ -36,22 +36,24 @@
   --foreground: #111111;
 }
 
-/* Light mode only — no dark backgrounds anywhere */
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  overflow-x: hidden;
-  font-feature-settings: "ss01", "ss02", "kern";
-}
+@layer base {
+  /* Light mode only — no dark backgrounds anywhere */
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    overflow-x: hidden;
+    font-feature-settings: "ss01", "ss02", "kern";
+  }
 
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-serif);
-  letter-spacing: -0.02em;
-}
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.02em;
+  }
 
-p, span, button, a, input, textarea {
-  font-family: var(--font-sans);
+  p, span, button, a, input, textarea {
+    font-family: var(--font-sans);
+  }
 }
 
 /* Section typography utilities */

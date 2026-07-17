@@ -88,7 +88,7 @@ export default function Footer() {
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10">
 
         {/* Main Columns Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 md:gap-12 mb-12 md:mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-8 md:gap-12 mb-12 md:mb-16">
           
           {/* Logo & Brand Details Column */}
           <div className="col-span-1 sm:col-span-2 flex flex-col items-start pr-0 md:pr-12">
@@ -126,7 +126,7 @@ export default function Footer() {
           {/* Links Columns */}
           {columns.map((col, idx) => (
             <div key={idx} className="flex flex-col">
-              <h3 className="text-[10px] font-semibold tracking-widest text-text-meta uppercase mb-6">
+              <h3 className="text-base font-semibold tracking-wider text-text-title uppercase mb-6">
                 {col.title}
               </h3>
               <div className="flex flex-col gap-3.5">

@@ -7,7 +7,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import ShoppingBagIcon from "@/components/icons/ShoppingBagIcon";
-import { useCartStore } from "@/lib/store";
+import { useCartStore, useWishlistStore } from "@/lib/store";
+import SearchModal from "@/components/SearchModal";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -15,9 +16,9 @@ export default function Navbar() {
   const [shopOpen, setShopOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
   const router = useRouter();
   const itemCount = useCartStore((s) => s.itemCount());
+  const wishlistCount = useWishlistStore((s) => s.items.length);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,9 +78,11 @@ export default function Navbar() {
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center gap-10">
-            <div
+            <Link
+              href="/shop"
               onMouseEnter={() => setShopOpen(true)}
-              className="py-3 cursor-pointer"
+              onClick={() => setShopOpen(false)}
+              className="py-3 cursor-pointer block"
             >
               <span className={`text-xs font-bold uppercase tracking-widest transition-colors duration-300 relative py-1 ${shopOpen ? "text-sage" : "text-text-body hover:text-sage"}`}>
                 SHOP
@@ -90,7 +93,7 @@ export default function Navbar() {
                   transition={{ duration: 0.3 }}
                 />
               </span>
-            </div>
+            </Link>
 
             <Link href="/about" className="text-xs font-bold uppercase tracking-widest text-text-body hover:text-sage transition-colors py-1">
               PHILOSOPHY
@@ -107,42 +110,29 @@ export default function Navbar() {
 
           {/* Right Action Icons */}
           <div className="flex items-center gap-4 shrink-0">
-            {/* Search Toggle Input */}
-            <div className="relative flex items-center">
-              <AnimatePresence>
-                {searchOpen && (
-                  <motion.input
-                    initial={{ width: 0, opacity: 0 }}
-                    animate={{ width: 180, opacity: 1 }}
-                    exit={{ width: 0, opacity: 0 }}
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" && searchQuery.trim()) {
-                        router.push(`/shop?q=${encodeURIComponent(searchQuery.trim())}`);
-                        setSearchOpen(false);
-                        setSearchQuery("");
-                      }
-                    }}
-                    placeholder="Search formulas..."
-                    className="px-4 py-2 text-xs rounded-full border border-cream focus:outline-none focus:border-sage bg-white text-text-title mr-2 shadow-sm"
-                  />
-                )}
-              </AnimatePresence>
-              <button
-                onClick={() => setSearchOpen(!searchOpen)}
-                className="p-2 text-text-title hover:text-sage transition-colors"
-                aria-label="Search"
-              >
-                <Search className="w-5 h-5 stroke-[1.5]" />
-              </button>
-            </div>
+            {/* Search Button */}
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="p-2 text-text-title hover:text-sage transition-colors"
+              aria-label="Search"
+            >
+              <Search className="w-5 h-5 stroke-[1.5]" />
+            </button>
 
             {/* Favorites Button */}
-            <button className="hidden sm:block p-2 text-text-title hover:text-sage transition-colors">
+            <Link href="/wishlist" className="hidden sm:block relative p-2 text-text-title hover:text-sage transition-colors">
               <Heart className="w-5 h-5 stroke-[1.5]" />
-            </button>
+              {wishlistCount > 0 && (
+                <motion.span
+                  key={wishlistCount}
+                  initial={{ scale: 0.5, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  className="absolute -top-0.5 -right-0.5 min-w-[16px] h-4 px-0.5 bg-rose-gold text-white text-[8px] font-bold rounded-full flex items-center justify-center"
+                >
+                  {wishlistCount}
+                </motion.span>
+              )}
+            </Link>
 
             {/* Shopping Bag Button — with live cart count */}
             <Link href="/cart" className="relative p-2 text-text-title hover:text-sage transition-colors">
@@ -268,9 +258,13 @@ export default function Navbar() {
             >
               <div className="flex flex-col gap-6 p-6 max-h-[70vh] overflow-y-auto">
                 <div className="flex flex-col items-start gap-2 border-b border-black/5 pb-4">
-                  <span className="text-xs font-bold uppercase tracking-widest text-sage mb-2">
+                  <Link
+                    href="/shop"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-xs font-bold uppercase tracking-widest text-sage mb-2 hover:text-olive transition-colors block"
+                  >
                     SHOP ALL
-                  </span>
+                  </Link>
                   <div className="grid grid-cols-2 gap-3 w-full pl-2">
                     {[...makeupItems, ...skincareItems].map((item, itemIdx) => (
                       <a
@@ -307,6 +301,13 @@ export default function Navbar() {
                   JOURNAL
                 </Link>
                 <Link
+                  href="/wishlist"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-sm font-semibold uppercase tracking-widest text-text-title hover:text-sage py-1 flex items-center gap-2"
+                >
+                  WISHLIST {wishlistCount > 0 && <span className="px-1.5 py-0.5 rounded-full bg-rose-gold text-white text-[9px] font-bold">{wishlistCount}</span>}
+                </Link>
+                <Link
                   href="/cart"
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-sm font-semibold uppercase tracking-widest text-sage hover:text-olive py-1 flex items-center gap-2"
@@ -318,6 +319,12 @@ export default function Navbar() {
           )}
         </AnimatePresence>
       </motion.nav>
+
+      <AnimatePresence>
+        {searchOpen && (
+          <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
+        )}
+      </AnimatePresence>
     </>
   );
 }

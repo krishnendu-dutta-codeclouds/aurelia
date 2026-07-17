@@ -10,7 +10,6 @@ import ProductRoutine from "@/components/home/ProductRoutine";
 import Sustainability from "@/components/home/Sustainability";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import Newsletter from "@/components/home/Newsletter";
-import Footer from "@/components/home/Footer";
 
 export default function Home() {
   // Bug fix: scrollY was tracked here and passed to Hero, causing ALL 11 sections
@@ -48,9 +47,6 @@ export default function Home() {
 
       {/* 4.10 Journal Newsletter Form */}
       <Newsletter />
-
-      {/* 4.11 Luxury Minimal Footer */}
-      <Footer />
     </main>
   );
 }

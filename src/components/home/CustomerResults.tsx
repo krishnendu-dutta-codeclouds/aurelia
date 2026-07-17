@@ -118,9 +118,9 @@ export default function CustomerResults() {
           </div>
 
           {/* Before/After Slider + Testimonials */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-32">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch mb-32">
             {/* Slider Column */}
-            <div className="lg:col-span-7 flex flex-col items-center">
+            <div className="lg:col-span-7 flex flex-col h-full">
               <div
                 ref={containerRef}
                 onMouseMove={handleMouseMove}
@@ -130,7 +130,7 @@ export default function CustomerResults() {
                 onMouseUp={() => setIsDragging(false)}
                 onTouchEnd={() => setIsDragging(false)}
                 onMouseLeave={() => setIsDragging(false)}
-                className="relative w-full aspect-4/5 max-h-[560px] rounded-4xl overflow-hidden cursor-ew-resize select-none border border-cream/50 shadow-md"
+                className="relative w-full flex-1 aspect-[4/5] lg:aspect-auto min-h-[450px] lg:min-h-0 rounded-4xl overflow-hidden cursor-ew-resize select-none border border-cream/50 shadow-md"
               >
                 {/* BEFORE – desaturated/dimmed with CSS filter */}
                 <div className="absolute inset-0 w-full h-full">
@@ -207,21 +207,21 @@ export default function CustomerResults() {
                     ))}
                   </div>
 
-                  <h3 className="font-serif text-base font-medium text-text-title mb-2 relative z-10">
+                  <h3 className="font-serif text-2xl md:text-[28px] font-medium text-text-title mb-3 relative z-10 leading-tight">
                     {test.title}
                   </h3>
 
-                  <p className="text-xs text-text-body font-light leading-relaxed mb-4 relative z-10 italic">
+                  <p className="text-sm md:text-base text-text-body font-light leading-relaxed mb-6 relative z-10 italic">
                     &ldquo;{test.quote}&rdquo;
                   </p>
 
-                  <div className="flex items-center justify-between border-t border-black/5 pt-3 relative z-10">
-                    <div className="flex flex-col">
-                      <span className="text-xs font-semibold text-text-title flex items-center gap-1.5">
+                  <div className="flex items-center justify-between border-t border-black/5 pt-4 relative z-10">
+                    <div className="flex flex-col gap-1">
+                      <span className="text-sm font-semibold text-text-title flex items-center gap-1.5">
                         {test.name}
-                        <Check className="w-3.5 h-3.5 text-sage stroke-3" />
+                        <Check className="w-4 h-4 text-sage stroke-[3]" />
                       </span>
-                      <span className="text-[9px] text-text-meta">
+                      <span className="text-xs text-text-meta">
                         {test.skinType} Skin · Age {test.age}
                       </span>
                     </div>

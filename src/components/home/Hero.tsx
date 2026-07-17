@@ -258,11 +258,11 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.05 }}
             className="text-white text-[44px] md:text-[68px] lg:text-[84px] leading-[0.92] tracking-[-0.04em] font-serif italic drop-shadow-[0_2px_18px_rgba(0,0,0,0.45)]"
           >
-            <span className="text-mask in">Glow</span>
+            <span className="text-mask in"><span className="font-serif">Glow</span></span>
             <br />
-            <span className="text-mask in" style={{ transitionDelay: "120ms" }}>Beyond</span>
+            <span className="text-mask in" style={{ transitionDelay: "120ms" }}><span className="font-serif">Beyond</span></span>
             <br />
-            <span className="text-mask in" style={{ transitionDelay: "240ms" }}>Skin.</span>
+            <span className="text-mask in" style={{ transitionDelay: "240ms" }}><span className="font-serif">Skin.</span></span>
           </motion.h1>
 
           <motion.p
@@ -271,7 +271,7 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.45 }}
             className="text-[10px] md:text-[11px] uppercase tracking-[0.35em] text-white/85 font-semibold drop-shadow-[0_1px_4px_rgba(0,0,0,0.55)]"
           >
-            <span className="text-mask in">Bio-Active Couture · 2026</span>
+            <span className="text-mask in"><span>Bio-Active Couture · 2026</span></span>
           </motion.p>
 
           <motion.p

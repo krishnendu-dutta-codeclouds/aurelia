@@ -4,9 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShoppingBag, Check, ArrowLeft } from "lucide-react";
+import { ShoppingBag, Check, ArrowLeft, Heart } from "lucide-react";
 import { getRelatedProducts } from "@/lib/products";
-import { useCartStore } from "@/lib/store";
+import { useCartStore, useWishlistStore } from "@/lib/store";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import QuantitySelector from "@/components/ui/QuantitySelector";
 import StarRating from "@/components/ui/StarRating";
@@ -15,6 +15,18 @@ import type { Product } from "@/lib/types";
 export default function ProductDetailClient({ product }: { product: Product }) {
   const related = getRelatedProducts(product.id, 3);
   const addItem = useCartStore((s) => s.addItem);
+  const wishlistItems = useWishlistStore((s) => s.items);
+  const addWishlistItem = useWishlistStore((s) => s.addItem);
+  const removeWishlistItem = useWishlistStore((s) => s.removeItem);
+  const isWishlisted = wishlistItems.some((i) => i.id === product.id);
+
+  const toggleWishlist = () => {
+    if (isWishlisted) {
+      removeWishlistItem(product.id);
+    } else {
+      addWishlistItem(product);
+    }
+  };
 
   const [activeImg, setActiveImg] = useState(0);
   const [qty, setQty] = useState(1);
@@ -157,6 +169,16 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                 ) : (
                   <><ShoppingBag className="w-4 h-4 stroke-[1.5]" /> Add to Bag</>
                 )}
+              </motion.button>
+              <motion.button
+                whileTap={{ scale: 0.92 }}
+                onClick={toggleWishlist}
+                className={`w-12 h-12 rounded-full border flex items-center justify-center transition-all duration-500 shadow-sm shrink-0 ${
+                  isWishlisted ? "bg-rose-gold border-rose-gold text-white" : "bg-white border-black/8 text-text-title hover:border-black/20"
+                }`}
+                aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
+              >
+                <Heart className={`w-4 h-4 ${isWishlisted ? "fill-current stroke-[1.5]" : "stroke-[1.5]"}`} />
               </motion.button>
             </div>
 

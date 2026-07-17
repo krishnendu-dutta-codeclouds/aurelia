@@ -65,3 +65,43 @@ export const useCartStore = create<CartStore>()(
     }
   )
 );
+
+interface WishlistStore {
+  items: Product[];
+  addItem: (product: Product) => void;
+  removeItem: (productId: string) => void;
+  hasItem: (productId: string) => boolean;
+  clearWishlist: () => void;
+}
+
+export const useWishlistStore = create<WishlistStore>()(
+  persist(
+    (set, get) => ({
+      items: [],
+
+      addItem: (product) => {
+        set((state) => {
+          const exists = state.items.some((i) => i.id === product.id);
+          if (exists) return { items: state.items };
+          return { items: [...state.items, product] };
+        });
+      },
+
+      removeItem: (productId) => {
+        set((state) => ({
+          items: state.items.filter((i) => i.id !== productId),
+        }));
+      },
+
+      hasItem: (productId) => {
+        return get().items.some((i) => i.id === productId);
+      },
+
+      clearWishlist: () => set({ items: [] }),
+    }),
+    {
+      name: "aurelia-wishlist",
+    }
+  )
+);
+
