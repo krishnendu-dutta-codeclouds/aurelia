@@ -2,6 +2,7 @@
 
 import { ArrowUp } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   const handleScrollToTop = () => {
@@ -44,54 +45,54 @@ export default function Footer() {
     {
       title: "RITUALS",
       links: [
-        { label: "Morning Collection", href: "#collection" },
-        { label: "Night Restore Routine", href: "#routine" },
-        { label: "Botanical Cleansers", href: "#collection" },
-        { label: "Limited Serums", href: "#collection" },
+        { label: "Morning Collection", href: "/shop" },
+        { label: "Night Restore Routine", href: "/shop" },
+        { label: "Botanical Cleansers", href: "/shop" },
+        { label: "Limited Serums", href: "/shop" },
       ],
     },
     {
       title: "BIO-SCIENCE",
       links: [
-        { label: "Ingredients Archive", href: "#ingredients" },
-        { label: "Safety Thresholds", href: "#ingredients" },
+        { label: "Ingredients Archive", href: "/ingredients" },
+        { label: "Safety Thresholds", href: "/ingredients" },
       ],
     },
     {
       title: "COMPANY",
       links: [
-        { label: "Brand Origin Story", href: "#story" },
-        { label: "Sustainability Index", href: "#sustainability" },
-        { label: "Eco-Packaging Hub", href: "#sustainability" },
-        { label: "Press & Awards", href: "#" },
+        { label: "Brand Origin Story", href: "/about" },
+        { label: "Sustainability Index", href: "/about" },
+        { label: "Eco-Packaging Hub", href: "/about" },
+        { label: "Press & Awards", href: "/about" },
       ],
     },
     {
       title: "SUPPORT",
       links: [
-        { label: "Bespoke Consultations", href: "#" },
-        { label: "Shipping & Return Policy", href: "#" },
-        { label: "Safety Data Sheets", href: "#" },
-        { label: "Contact Skincare Experts", href: "#" },
+        { label: "Bespoke Consultations", href: "/about" },
+        { label: "Shipping & Return Policy", href: "/about" },
+        { label: "Safety Data Sheets", href: "/ingredients" },
+        { label: "Contact Skincare Experts", href: "/about" },
       ],
     },
   ];
 
   return (
-    <footer className="bg-cream/45 border-t border-soft-beige pt-12 md:pt-24 pb-8 md:pb-12 relative overflow-hidden">
-      
+    <footer className="bg-cream/45 border-t border-soft-beige pt-12 md:pt-24 pb-8 md:pb-12 relative overflow-hidden grain">
+
       {/* Background soft gradients */}
       <div className="absolute bottom-0 right-[-10%] w-[40%] h-[40%] rounded-full bg-gradient-to-tr from-mint/15 to-transparent blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 left-[-10%] w-[40%] h-[40%] rounded-full bg-gradient-to-tr from-peach/10 to-transparent blur-[100px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        
+      <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10">
+
         {/* Main Columns Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 md:gap-12 mb-12 md:mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 md:gap-12 mb-12 md:mb-16">
           
           {/* Logo & Brand Details Column */}
           <div className="col-span-1 sm:col-span-2 flex flex-col items-start pr-0 md:pr-12">
-            <a href="#" className="mb-6 hover:opacity-85 transition-opacity block">
+            <Link href="/" className="mb-6 hover:opacity-85 transition-opacity block">
               <Image
                 src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logo.png`}
                 alt="Aurelia Logo"
@@ -99,7 +100,7 @@ export default function Footer() {
                 height={30}
                 className="h-8 w-auto object-contain"
               />
-            </a>
+            </Link>
             <p className="text-sm text-text-body font-light leading-relaxed mb-8 max-w-sm">
               Formulated with bio-active botanical compounds. Restoring dermal radiance through clinical precision.
             </p>
@@ -130,13 +131,13 @@ export default function Footer() {
               </h3>
               <div className="flex flex-col gap-3.5">
                 {col.links.map((link, linkIdx) => (
-                  <a
+                  <Link
                     key={linkIdx}
                     href={link.href}
                     className="text-sm text-text-body font-light hover:text-sage transition-colors duration-300 relative group w-fit"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -144,13 +145,36 @@ export default function Footer() {
 
         </div>
 
+        {/* Giant scrolling wordmark — full-width marquee aligned with the floating header pill */}
+        <div className="my-12 md:my-16">
+          <div className="mx-auto w-[94%] max-w-[1600px] bg-white/85 backdrop-blur-md border border-cream rounded-4xl overflow-hidden">
+            <div className="overflow-hidden">
+              <div className="animate-marquee flex items-center gap-12 whitespace-nowrap py-6">
+                {Array.from({ length: 2 }).map((_, groupIdx) => (
+                  <div key={groupIdx} className="flex items-center gap-12">
+                    {["AURELIA", "BOTANICAL COUTURE", "EST. 2026", "CLINICAL ELEGANCE", "AURELIA"].map((w, i) => (
+                      <span
+                        key={`${groupIdx}-${i}`}
+                        className="font-serif italic text-6xl md:text-8xl lg:text-9xl text-text-title/15 whitespace-nowrap leading-none tracking-[-0.04em] shrink-0"
+                      >
+                        {w}
+                        <span className="ml-12 text-sage/30">✦</span>
+                      </span>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Bottom Bar */}
         <div className="border-t border-black/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-6 text-[11px] text-text-meta font-light">
             <span>© 2026 AURELIA Beauty. All rights protected.</span>
-            <a href="#" className="hover:text-sage transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-sage transition-colors">Terms of Rituals</a>
-            <a href="#" className="hover:text-sage transition-colors">Accessibility Standards</a>
+            <Link href="/about" className="hover:text-sage transition-colors">Privacy Policy</Link>
+            <Link href="/about" className="hover:text-sage transition-colors">Terms of Rituals</Link>
+            <Link href="/about" className="hover:text-sage transition-colors">Accessibility Standards</Link>
           </div>
 
           {/* Scroll to top button */}

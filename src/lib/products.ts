@@ -1,0 +1,369 @@
+import { Product } from "./types";
+
+export const products: Product[] = [
+  {
+    id: "lipstick",
+    name: "Velvet Matte Lip Colour",
+    slug: "lipstick",
+    category: "Lipstick & Pigments",
+    categorySlug: "lipstick",
+    price: 45,
+    oldPrice: 58,
+    rating: 4.9,
+    badge: "Trending Now",
+    benefits: ["Long-lasting wear", "Botanical pigments", "Non-drying formula", "Vegan & cruelty-free"],
+    description: "Organic, pure botanical lip color in three iconic shades. Ultra-rich matte finish that lasts 12 hours.",
+    longDescription:
+      "Crafted with the precision of a couture maison, the Velvet Matte Lip Colour draws on our proprietary BotaLip™ complex — a fusion of cold-pressed rosehip, vitamin E ceramides, and natural wax esters — to deliver an impossibly velvety matte finish that conditions while it colours. Free from synthetic dyes, mineral oils, and animal-derived components, each shade is calibrated through spectroscopic analysis for true-to-pigment accuracy.",
+    howToUse: [
+      "Begin with a perfectly clean, lightly exfoliated lip surface.",
+      "Apply directly from the bullet using short, feathered strokes from the centre outward.",
+      "For precision at the Cupid's bow, trace the contour with the tapered tip.",
+      "Layer a second coat within 30 seconds for deeper intensity.",
+      "Blot with a single tissue layer to set the matte finish and extend wear.",
+    ],
+    keyIngredients: [
+      { name: "Rosehip Wax", benefit: "Conditions and seals moisture" },
+      { name: "Vitamin E Tocopherol", benefit: "Antioxidant protection" },
+      { name: "Candelilla Wax", benefit: "Natural vegan binding agent" },
+      { name: "Kakadu Plum Extract", benefit: "Vitamin C brightening" },
+    ],
+    images: [
+      { src: "/images/lip_red.png", alt: "Crimson Red shade", shadeName: "Crimson Red", hex: "#B31C24" },
+      { src: "/images/lip_peach.png", alt: "Peach Nude shade", shadeName: "Peach Nude", hex: "#D68E71" },
+      { src: "/images/lip_rose.png", alt: "Dusty Rose shade", shadeName: "Dusty Rose", hex: "#C77D86" },
+    ],
+    theme: "rose",
+    tags: ["makeup", "lip", "bestseller"],
+    reviews: [
+      {
+        id: "r1",
+        author: "Isabelle M.",
+        rating: 5,
+        date: "2026-06-10",
+        title: "The most beautiful matte I have ever worn",
+        body: "Crimson Red is extraordinary. Rich, true colour, wears from morning through evening without fading. The formula feels like velvet — nothing like typical mattes that dry out lips.",
+        verified: true,
+        skin: "Dry",
+      },
+      {
+        id: "r2",
+        author: "Priya S.",
+        rating: 5,
+        date: "2026-05-28",
+        title: "Peach Nude is my everyday shade now",
+        body: "I rotate between all three but Peach Nude is my holy grail. Lasts 6–8 hours on me without a touch-up. Feels incredibly lightweight.",
+        verified: true,
+        skin: "Combination",
+      },
+      {
+        id: "r3",
+        author: "Charlotte B.",
+        rating: 4,
+        date: "2026-05-02",
+        title: "Gorgeous formula, slight transfer",
+        body: "Love the colour payoff and the botanical ingredients list. Dusty Rose is stunning. Only giving 4 stars because there's minimal transfer on glassware.",
+        verified: true,
+        skin: "Normal",
+      },
+    ],
+  },
+  {
+    id: "serum",
+    name: "Aura Radiance Serum",
+    slug: "serum",
+    category: "Serums & Toners",
+    categorySlug: "serum",
+    price: 82,
+    rating: 4.9,
+    badge: "Best Seller",
+    benefits: ["Brightens instantly", "Boosts collagen", "Neutralises free radicals", "Deep hydration"],
+    description: "Vitamin C & Rosehip synthesis. Reverses UV-induced dullness with 15% Kakadu Vitamin C.",
+    longDescription:
+      "The Aura Radiance Serum is the cornerstone of the Aurelia clinical collection. Formulated at the optimal pH of 3.2 for maximum Vitamin C bioavailability, it delivers 15% Tetrahexyldecyl Ascorbate — the most stable, lipid-soluble form of Vitamin C — deep into the epidermis. Paired with 3% Niacinamide and our Rosehip Cold-Press Complex, it visibly brightens, firms, and protects within a single morning ritual.",
+    howToUse: [
+      "After cleansing and toning, apply 3–4 drops to clean fingertips.",
+      "Press gently into skin using upward, lymphatic strokes from neck to forehead.",
+      "Allow 60 seconds for full absorption before layering moisturiser.",
+      "Use every morning for optimal antioxidant defence throughout the day.",
+      "Follow with broad-spectrum SPF 30+ — mandatory when using Vitamin C.",
+    ],
+    keyIngredients: [
+      { name: "Tetrahexyldecyl Ascorbate (15%)", benefit: "Stable lipid-soluble Vitamin C for deep brightening" },
+      { name: "Niacinamide (3%)", benefit: "Pore minimisation and barrier strengthening" },
+      { name: "Rosehip Cold-Press Oil", benefit: "Essential fatty acids for cellular repair" },
+      { name: "Hyaluronic Acid (3 weights)", benefit: "Multi-depth hydration cascade" },
+    ],
+    images: [
+      { src: "/images/serum.png", alt: "Aura Radiance Serum bottle" },
+      { src: "/images/skin_glowing.png", alt: "Skin radiance after serum use" },
+    ],
+    theme: "sage",
+    tags: ["skincare", "serum", "vitamin-c", "bestseller"],
+    reviews: [
+      {
+        id: "r4",
+        author: "Léa R.",
+        rating: 5,
+        date: "2026-06-15",
+        title: "My skin genuinely glows now",
+        body: "Two weeks in and my hyperpigmentation is noticeably lighter. The serum absorbs instantly, no sticky residue. A non-negotiable in my morning ritual.",
+        verified: true,
+        skin: "Oily",
+      },
+      {
+        id: "r5",
+        author: "Amara K.",
+        rating: 5,
+        date: "2026-06-01",
+        title: "Worth every single penny",
+        body: "I have tried 12 different Vitamin C serums. This one actually works and does not oxidise within a week. Packaging is flawless too.",
+        verified: true,
+        skin: "Dark",
+      },
+      {
+        id: "r6",
+        author: "Sophie T.",
+        rating: 4,
+        date: "2026-05-18",
+        title: "Exceptional — slight initial tingling",
+        body: "Very slight tingle the first few uses, which is expected at this pH. Stick with it — the results are remarkable after 3 weeks.",
+        verified: true,
+        skin: "Sensitive",
+      },
+    ],
+  },
+  {
+    id: "cream",
+    name: "Luna Radiance Repair Cream",
+    slug: "cream",
+    category: "Moisturisers",
+    categorySlug: "moisturiser",
+    price: 95,
+    rating: 5.0,
+    badge: "Award Winner",
+    benefits: ["Deep lipid barrier repair", "24hr moisture retention", "Reduces fine lines", "Plumps and firms"],
+    description: "Deep lipid barrier regeneration. Rebuilds depleted lipid cells and shields against pollution overnight.",
+    longDescription:
+      "Luna Radiance Repair Cream is an overnight phenomenon — a rich yet fast-absorbing formula that works in synchrony with the skin's nocturnal repair cycle. The centrepiece is our LipidLock™ technology: a triple-ceramide complex blended with cold-pressed chia seed oil and Antarctic glacier water. Together they re-densify the stratum corneum, seal transepidermal water loss, and deliver clinically measurable improvements in skin firmness within 28 days.",
+    howToUse: [
+      "Apply as the final step in your PM ritual, after serum and eye cream.",
+      "Warm a pea-sized amount between fingertips for 5 seconds to activate the bio-lipid complex.",
+      "Press firmly into cheeks, forehead, and chin using an upward lifting motion.",
+      "Blend remaining product downward onto neck and décolletage.",
+      "Allow to work overnight — avoid rinsing until morning cleanse.",
+    ],
+    keyIngredients: [
+      { name: "Ceramide NP, AP & EOP (Triple Complex)", benefit: "Barrier reconstruction and moisture lock" },
+      { name: "Cold-Pressed Chia Seed Oil", benefit: "Omega-3 & 6 for deep dermal nourishment" },
+      { name: "Antarctic Glacier Water", benefit: "Ultra-pure hydration with mineral micro-nutrients" },
+      { name: "Bakuchiol (Natural Retinol)", benefit: "Cell turnover and collagen stimulation without irritation" },
+    ],
+    images: [
+      { src: "/images/cream.png", alt: "Luna Radiance Repair Cream jar" },
+      { src: "/images/skin_glowing.png", alt: "Hydrated skin after cream application" },
+    ],
+    theme: "cream",
+    tags: ["skincare", "moisturiser", "anti-aging", "award"],
+    reviews: [
+      {
+        id: "r7",
+        author: "Margot D.",
+        rating: 5,
+        date: "2026-06-20",
+        title: "Transformed my dry skin overnight",
+        body: "I wake up with genuinely plump, hydrated skin. Nothing else has achieved this. The texture is like a cloud — rich but never greasy.",
+        verified: true,
+        skin: "Very Dry",
+      },
+      {
+        id: "r8",
+        author: "Elena V.",
+        rating: 5,
+        date: "2026-06-05",
+        title: "The best investment in my skincare routine",
+        body: "At first the price made me hesitate. Now I cannot imagine my routine without it. My fine lines around the eyes have visibly softened in 4 weeks.",
+        verified: true,
+        skin: "Mature",
+      },
+    ],
+  },
+  {
+    id: "toner",
+    name: "Botanical Harmony Toner",
+    slug: "toner",
+    category: "Serums & Toners",
+    categorySlug: "serum",
+    price: 64,
+    rating: 4.8,
+    benefits: ["Balances pH", "Tightens pores", "Soothes redness", "Preps for serum"],
+    description: "Cleanses, shrinks pores, and balances pH levels with mint and aloe vera complex.",
+    longDescription:
+      "The Botanical Harmony Toner is the essential bridge between your cleansing and treatment steps. Formulated at a precise pH of 5.5 to match healthy skin's natural acid mantle, it sweeps away residual impurities and hard-water minerals, while our Mint & Aloe Biotic Complex calms redness and reinforces the skin microbiome. Alcohol-free — safe for daily use on all skin types including rosacea-prone and sensitised.",
+    howToUse: [
+      "After cleansing, saturate a reusable cotton round or press 2–3 pumps into clean palms.",
+      "Sweep gently across face and neck in upward motions.",
+      "For congested areas, hold a soaked pad against the skin for 10 seconds.",
+      "Allow 30 seconds to absorb before applying serum.",
+      "Use morning and evening as the first step after cleansing.",
+    ],
+    keyIngredients: [
+      { name: "Organic Aloe Vera (98% Pure)", benefit: "Soothes irritation and intense hydration" },
+      { name: "Peppermint Hydrosol", benefit: "Pore tightening and cooling sensation" },
+      { name: "Willow Bark Extract", benefit: "Natural BHA exfoliation and acne control" },
+      { name: "Allantoin", benefit: "Skin-conditioning and healing" },
+    ],
+    images: [
+      { src: "/images/toner.png", alt: "Botanical Harmony Toner bottle" },
+      { src: "/images/skin_glowing.png", alt: "Clear balanced skin after toner use" },
+    ],
+    theme: "sage",
+    tags: ["skincare", "toner", "pores", "sensitive"],
+    reviews: [
+      {
+        id: "r9",
+        author: "Nadia F.",
+        rating: 5,
+        date: "2026-06-12",
+        title: "My pores are noticeably smaller",
+        body: "I have used toners for years. This is the first that has genuinely minimised my pores with consistent use. The mint scent is refreshing without being overpowering.",
+        verified: true,
+        skin: "Oily",
+      },
+      {
+        id: "r10",
+        author: "Hana Y.",
+        rating: 4,
+        date: "2026-05-30",
+        title: "Perfect for my sensitive skin",
+        body: "Finally a toner without alcohol. My skin has never reacted to this and I have been using it twice daily for 2 months. Really helps with redness.",
+        verified: true,
+        skin: "Sensitive",
+      },
+    ],
+  },
+  {
+    id: "booster",
+    name: "Kakadu Plum Booster",
+    slug: "booster",
+    category: "Treatments",
+    categorySlug: "treatment",
+    price: 88,
+    rating: 4.9,
+    badge: "New",
+    benefits: ["Ultra-concentrated Vitamin C", "Targets hyperpigmentation", "Antioxidant powerhouse", "Brightens in 7 days"],
+    description: "Ultra-concentrated Vitamin C shot for hyperpigmented spots and uneven skin tone.",
+    longDescription:
+      "The Kakadu Plum Booster is our most potent brightening treatment — a concentrated dose of 20% stabilised Vitamin C derived from the Australian Kakadu plum, the world's richest natural source of ascorbic acid. Designed to be layered under your serum for targeted action on stubborn hyperpigmentation, dark spots, and post-inflammatory marks. Clinical trials show a 47% reduction in melanin density within 28 days of consistent use.",
+    howToUse: [
+      "Use 2–3 times per week on clean, dry skin before your serum.",
+      "Apply 2 drops directly onto areas of concern (not all-over).",
+      "Gently tap — do not rub — to encourage absorption without disrupting the epidermis.",
+      "Allow 2 full minutes before layering your regular serum.",
+      "Always follow with broad-spectrum SPF 50+ during the day.",
+    ],
+    keyIngredients: [
+      { name: "Kakadu Plum Extract (20% Vitamin C)", benefit: "Highest natural Vitamin C source — brightens and protects" },
+      { name: "Azelaic Acid (5%)", benefit: "Melanin suppression and anti-inflammatory" },
+      { name: "Ferulic Acid", benefit: "Amplifies Vitamin C stability and potency" },
+      { name: "Sodium Hyaluronate", benefit: "Maintains hydration balance under treatment" },
+    ],
+    images: [
+      { src: "/images/serum.png", alt: "Kakadu Plum Booster vial" },
+      { src: "/images/skin_glowing.png", alt: "Even skin tone result" },
+    ],
+    theme: "sage",
+    tags: ["skincare", "treatment", "vitamin-c", "pigmentation", "new"],
+    reviews: [
+      {
+        id: "r11",
+        author: "Aiko T.",
+        rating: 5,
+        date: "2026-06-18",
+        title: "My dark spots are fading — actually fading",
+        body: "I was sceptical given the price of previous treatments that did nothing. By week two, my PIH marks were noticeably lighter. I am ordering two more immediately.",
+        verified: true,
+        skin: "Medium",
+      },
+    ],
+  },
+  {
+    id: "eye-cream",
+    name: "Lumière Eye Renewal Cream",
+    slug: "eye-cream",
+    category: "Treatments",
+    categorySlug: "treatment",
+    price: 78,
+    rating: 4.7,
+    benefits: ["Reduces dark circles", "Firms under-eye area", "Depuffs instantly", "Smooths fine lines"],
+    description: "Targeted peptide complex for the delicate periorbital zone. Visibly lifts and firms.",
+    longDescription:
+      "The most delicate skin on the face demands the most refined formulation. Lumière Eye Renewal Cream combines a tri-peptide lifting complex with cold-pressed coffee seed oil and arctic rose stem cells to address the four primary concerns of the periorbital zone: dark circles, puffiness, fine lines, and crepey texture. The micro-bead roller applicator ensures precise delivery and stimulates lymphatic drainage simultaneously.",
+    howToUse: [
+      "Morning and evening, take a grain-of-rice amount on your ring finger.",
+      "Dot gently around the entire orbital bone — avoid direct contact with the lash line.",
+      "Using the lightest possible pressure, tap (never drag) from the inner corner outward.",
+      "Roll the metal applicator tip along the orbital bone to activate lymphatic drainage.",
+      "Allow to absorb before applying face moisturiser.",
+    ],
+    keyIngredients: [
+      { name: "Tri-Peptide Lifting Complex", benefit: "Firms and lifts the under-eye area" },
+      { name: "Cold-Pressed Coffee Seed Oil", benefit: "Instant depuffing via caffeine vasoconstriction" },
+      { name: "Arctic Rose Stem Cells", benefit: "Extreme climate-adapted regeneration" },
+      { name: "Retinyl Palmitate", benefit: "Gentle retinoid for fine line reduction" },
+    ],
+    images: [
+      { src: "/images/cream.png", alt: "Lumière Eye Renewal Cream" },
+      { src: "/images/skin_glowing.png", alt: "Refreshed under-eye area" },
+    ],
+    theme: "cream",
+    tags: ["skincare", "eye", "anti-aging", "treatment"],
+    reviews: [
+      {
+        id: "r12",
+        author: "Diana P.",
+        rating: 5,
+        date: "2026-06-08",
+        title: "Genuinely reduced my dark circles",
+        body: "I have hereditary dark circles. After 6 weeks of consistent use, the discolouration is lighter and my under-eye area looks less hollow. Remarkable.",
+        verified: true,
+        skin: "Mature",
+      },
+      {
+        id: "r13",
+        author: "Mei L.",
+        rating: 4,
+        date: "2026-05-25",
+        title: "Love the metal applicator",
+        body: "The roller applicator is genius — instant depuffing every morning. Formula is rich without being heavy. Packaging is exquisite.",
+        verified: true,
+        skin: "Normal",
+      },
+    ],
+  },
+];
+
+export const categories = [
+  { slug: "all", label: "All Products" },
+  { slug: "serum", label: "Serums & Toners" },
+  { slug: "moisturiser", label: "Moisturisers" },
+  { slug: "lipstick", label: "Lip Colour" },
+  { slug: "treatment", label: "Treatments" },
+];
+
+export function getProductById(id: string): Product | undefined {
+  return products.find((p) => p.id === id || p.slug === id);
+}
+
+export function getProductsByCategory(slug: string): Product[] {
+  if (slug === "all") return products;
+  return products.filter((p) => p.categorySlug === slug);
+}
+
+export function getRelatedProducts(currentId: string, limit = 3): Product[] {
+  const current = getProductById(currentId);
+  if (!current) return products.slice(0, limit);
+  return products
+    .filter((p) => p.id !== currentId && (p.categorySlug === current.categorySlug || p.tags.some((t) => current.tags.includes(t))))
+    .slice(0, limit);
+}

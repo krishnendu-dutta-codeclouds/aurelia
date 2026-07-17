@@ -4,7 +4,10 @@ import { useState, useEffect } from "react";
 import { Search, Menu, X, ArrowRight, Heart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import ShoppingBagIcon from "@/components/icons/ShoppingBagIcon";
+import { useCartStore } from "@/lib/store";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -12,6 +15,9 @@ export default function Navbar() {
   const [shopOpen, setShopOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter();
+  const itemCount = useCartStore((s) => s.itemCount());
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,11 +60,11 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         onMouseLeave={() => setShopOpen(false)}
-        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[94%] max-w-7xl rounded-4xl z-40 transition-all duration-500 border bg-white/95 backdrop-blur-md border-cream px-6 ${scrolled || shopOpen ? "shadow-[0_12px_40px_rgba(0,0,0,0.06)] py-2" : "shadow-[0_4px_24px_rgba(0,0,0,0.04)] py-2"}`}
+        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[94%] max-w-[1600px] rounded-4xl z-40 transition-all duration-500 border bg-white/95 backdrop-blur-md border-cream px-6 ${scrolled || shopOpen ? "shadow-[0_12px_40px_rgba(0,0,0,0.06)] py-2" : "shadow-[0_4px_24px_rgba(0,0,0,0.04)] py-2"}`}
       >
         <div className="flex items-center justify-between w-full relative z-20">
           {/* Logo (AURELIA logo image) */}
-          <a href="#" className="hover:opacity-85 transition-opacity shrink-0 flex items-center">
+          <Link href="/" className="hover:opacity-85 transition-opacity shrink-0 flex items-center">
             <Image
               src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logo.png`}
               alt="Aurelia Logo"
@@ -67,7 +73,7 @@ export default function Navbar() {
               priority
               className="h-6 w-auto object-contain"
             />
-          </a>
+          </Link>
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center gap-10">
@@ -86,17 +92,17 @@ export default function Navbar() {
               </span>
             </div>
 
-            <a href="#story" className="text-xs font-bold uppercase tracking-widest text-text-body hover:text-sage transition-colors py-1">
+            <Link href="/about" className="text-xs font-bold uppercase tracking-widest text-text-body hover:text-sage transition-colors py-1">
               PHILOSOPHY
-            </a>
+            </Link>
 
-            <a href="#collection" className="text-xs font-bold uppercase tracking-widest text-text-body hover:text-sage transition-colors py-1">
+            <Link href="/shop" className="text-xs font-bold uppercase tracking-widest text-text-body hover:text-sage transition-colors py-1">
               GALLERY
-            </a>
+            </Link>
 
-            <a href="#newsletter" className="text-xs font-bold uppercase tracking-widest text-text-body hover:text-sage transition-colors py-1">
+            <Link href="/journal" className="text-xs font-bold uppercase tracking-widest text-text-body hover:text-sage transition-colors py-1">
               JOURNAL
-            </a>
+            </Link>
           </div>
 
           {/* Right Action Icons */}
@@ -110,7 +116,16 @@ export default function Navbar() {
                     animate={{ width: 180, opacity: 1 }}
                     exit={{ width: 0, opacity: 0 }}
                     type="text"
-                    placeholder="Search cosmetics..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" && searchQuery.trim()) {
+                        router.push(`/shop?q=${encodeURIComponent(searchQuery.trim())}`);
+                        setSearchOpen(false);
+                        setSearchQuery("");
+                      }
+                    }}
+                    placeholder="Search formulas..."
                     className="px-4 py-2 text-xs rounded-full border border-cream focus:outline-none focus:border-sage bg-white text-text-title mr-2 shadow-sm"
                   />
                 )}
@@ -129,11 +144,22 @@ export default function Navbar() {
               <Heart className="w-5 h-5 stroke-[1.5]" />
             </button>
 
-            {/* Shopping Bag Button */}
-            <button className="relative p-2 text-text-title hover:text-sage transition-colors">
+            {/* Shopping Bag Button — with live cart count */}
+            <Link href="/cart" className="relative p-2 text-text-title hover:text-sage transition-colors">
               <ShoppingBagIcon className="w-5 h-5" strokeWidth={1.5} />
-              <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-rose-gold rounded-full" />
-            </button>
+              {itemCount > 0 ? (
+                <motion.span
+                  key={itemCount}
+                  initial={{ scale: 0.5, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  className="absolute -top-0.5 -right-0.5 min-w-[16px] h-4 px-0.5 bg-rose-gold text-white text-[8px] font-bold rounded-full flex items-center justify-center"
+                >
+                  {itemCount}
+                </motion.span>
+              ) : (
+                <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-rose-gold rounded-full" />
+              )}
+            </Link>
 
             {/* Mobile Menu Toggle Button */}
             <button
@@ -156,7 +182,7 @@ export default function Navbar() {
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
               className="hidden md:block absolute top-[100%] left-0 w-full bg-white border border-[#FAF5EF] rounded-b-[32px] shadow-[0_20px_40px_rgba(0,0,0,0.04)] px-10 py-10 mt-1 z-10 overflow-hidden"
             >
-              <div className="grid grid-cols-12 gap-8 max-w-7xl mx-auto text-left">
+              <div className="grid grid-cols-12 gap-8 max-w-[1600px] mx-auto text-left">
                 {/* Categorized links columns */}
                 <div className="col-span-8 grid grid-cols-2 gap-8">
                   <div className="flex flex-col">
@@ -259,27 +285,34 @@ export default function Navbar() {
                   </div>
                 </div>
 
-                <a
-                  href="#story"
+                <Link
+                  href="/about"
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-sm font-semibold uppercase tracking-widest text-text-title hover:text-sage py-1"
                 >
                   PHILOSOPHY
-                </a>
-                <a
-                  href="#collection"
+                </Link>
+                <Link
+                  href="/shop"
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-sm font-semibold uppercase tracking-widest text-text-title hover:text-sage py-1"
                 >
                   GALLERY
-                </a>
-                <a
-                  href="#newsletter"
+                </Link>
+                <Link
+                  href="/journal"
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-sm font-semibold uppercase tracking-widest text-text-title hover:text-sage py-1"
                 >
                   JOURNAL
-                </a>
+                </Link>
+                <Link
+                  href="/cart"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-sm font-semibold uppercase tracking-widest text-sage hover:text-olive py-1 flex items-center gap-2"
+                >
+                  BAG {itemCount > 0 && <span className="px-1.5 py-0.5 rounded-full bg-rose-gold text-white text-[9px] font-bold">{itemCount}</span>}
+                </Link>
               </div>
             </motion.div>
           )}

@@ -111,13 +111,13 @@ export default function ScrollStory() {
   }, []);
 
   return (
-    <section id="story" className="relative bg-white">
+    <section id="story" className="relative  bg-white">
 
       {/* ─── DESKTOP: GSAP Pinned Layout with scrolling stages ─── */}
       <div ref={stagesSectionRef} className="relative hidden md:block h-screen overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-cream/60 via-white to-mint/20 pointer-events-none" />
 
-        <div className="relative h-full max-w-7xl mx-auto px-6 md:px-12">
+        <div className="relative h-full max-w-[1600px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-2 gap-16 h-full">
 
             {/* LEFT COLUMN: Wrapper containing the 3 stage slides translated by GSAP */}
@@ -190,7 +190,7 @@ export default function ScrollStory() {
               <div className="relative w-full max-w-sm">
 
                 {/* Glow blob behind image */}
-                <AnimatePresence mode="wait">
+                <AnimatePresence>
                   <motion.div
                     key={`glow-${activeStage}`}
                     initial={{ opacity: 0 }}
@@ -202,7 +202,7 @@ export default function ScrollStory() {
                 </AnimatePresence>
 
                 {/* Watermark stage number */}
-                <AnimatePresence mode="wait">
+                <AnimatePresence>
                   <motion.span
                     key={`num-${activeStage}`}
                     initial={{ opacity: 0 }}

@@ -242,7 +242,7 @@ export default function Ingredients() {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full flex flex-col gap-8 md:gap-12">
+      <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10 w-full flex flex-col gap-8 md:gap-12">
 
         {/* Top Header Panel */}
         <div className="w-full flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -255,12 +255,12 @@ export default function Ingredients() {
               </span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-light text-[#1b2219] leading-[1.12]">
+            <h2 className="section-title text-[#1b2219] font-light leading-[1.12]">
               Scientific <span className="font-semibold text-[#6e7a52]">Purity.</span> <span className="italic font-light text-[#8e9a72]">Proven Efficacy.</span>
             </h2>
           </div>
 
-          <p className="text-sm md:text-base text-[#4a5548] font-light max-w-md leading-relaxed md:mb-2 text-left">
+          <p className="section-copy text-[#4a5548] max-w-md md:mb-2 text-left">
             Every molecule serves a precise cellular function. We formulate with clean, active botanicals at optimized concentrations to guarantee visible restoration.
           </p>
         </div>

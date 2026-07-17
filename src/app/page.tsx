@@ -2,6 +2,7 @@
 
 import Hero from "@/components/home/Hero";
 import ScrollStory from "@/components/home/ScrollStory";
+import Manifesto from "@/components/home/Manifesto";
 import Ingredients from "@/components/home/Ingredients";
 import ProductCollection from "@/components/home/ProductCollection";
 import CustomerResults from "@/components/home/CustomerResults";
@@ -21,6 +22,9 @@ export default function Home() {
 
       {/* 4.2 Scroll Story Section */}
       <ScrollStory />
+
+      {/* 4.2b Manifesto / Stats — 2026 trending editorial numbers section */}
+      <Manifesto />
 
       {/* 4.3 Bio-Active Ingredients Section */}
       <Ingredients />

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, ArrowRight, ShieldCheck, RefreshCw, Zap, LucideIcon } from "lucide-react";
 import Image from "next/image";
+import SectionLabel from "@/components/SectionLabel";
 
 interface RoutineStep {
   step: string;
@@ -81,18 +82,20 @@ export default function ProductRoutine() {
   const activeSteps = routine === "morning" ? morningRoutine : nightRoutine;
 
   return (
-    <section id="routine" className="py-32 bg-white relative overflow-hidden">
+    <section id="routine" className="py-24 md:py-32 bg-white relative overflow-hidden">
       
       {/* Background radial gradients */}
       <div className="absolute top-[10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-gradient-to-tr from-mint/15 to-transparent blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-gradient-to-br from-peach/15 to-transparent blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        
+      <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10">
+
         {/* Toggle & Header Layout */}
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-24">
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-widest text-sage mb-4">Skincare Rituals</p>
+            <div className="mb-6">
+              <SectionLabel index="06 / Rituals" code={"// AUR-RIT-26"} />
+            </div>
             <h2 className="text-4xl md:text-5xl font-serif font-light text-text-title">
               Crafting Your <br />
               <span className="italic font-normal text-sage">Cellular Routine</span>
@@ -142,7 +145,7 @@ export default function ProductRoutine() {
           {/* Connecting line for timeline */}
           <div className="hidden lg:block absolute top-[130px] left-[15%] right-[15%] h-px bg-black/5 -z-10" />
 
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             {activeSteps.map((step, index) => {
               const StepIcon = step.icon;
               return (

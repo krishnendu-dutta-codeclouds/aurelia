@@ -4,6 +4,7 @@ import { useState, useRef, useCallback, MouseEvent, TouchEvent } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Check, Star, Quote } from "lucide-react";
+import SectionLabel from "@/components/SectionLabel";
 
 interface Testimonial {
   id: number;
@@ -96,21 +97,21 @@ export default function CustomerResults() {
 
   return (
     <>
-      <section className="py-32 bg-warm-white relative overflow-hidden">
+      <section className="pt-24 md:pt-32 bg-warm-white relative overflow-hidden">
         <div className="absolute top-[20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-gradient-to-tr from-peach/10 to-transparent blur-[120px] pointer-events-none" />
         <div className="absolute bottom-[20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-gradient-to-br from-mint/20 to-transparent blur-[120px] pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10">
           {/* Header */}
           <div className="max-w-3xl mb-24">
-            <p className="text-xs font-semibold uppercase tracking-widest text-sage mb-4">
-              Clinical Outcomes
-            </p>
-            <h2 className="text-4xl md:text-6xl font-serif font-light text-text-title mb-6 leading-tight">
+            <div className="mb-6">
+              <SectionLabel index="05 / Outcomes" code={"// AUR-RES-26"} />
+            </div>
+            <h2 className="section-title font-serif mb-6 leading-tight">
               Proven Results. <br />
               <span className="italic font-normal text-sage">Loved by Glowing Skin.</span>
             </h2>
-            <p className="text-text-body font-light max-w-xl leading-relaxed">
+            <p className="section-copy max-w-xl">
               Real skin, real restoration. Drag the slider to witness the cellular
               radiance difference after 14 days of the complete Aurelia ritual.
             </p>
@@ -238,29 +239,31 @@ export default function CustomerResults() {
         {/* Both copies must be siblings inside ONE flex container to loop seamlessly */}
 
       </section>
-      <div className="w-full bg-cream py-6 border-y border-soft-beige relative overflow-hidden">
-        <div className="animate-marquee flex items-center gap-16 whitespace-nowrap w-max">
-          {/* First copy */}
-          {trustBadges.map((badge, idx) => (
-            <span
-              key={`a-${idx}`}
-              className="text-[10px] font-semibold text-text-body uppercase tracking-widest flex items-center gap-3 shrink-0"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-sage shrink-0" />
-              {badge}
-            </span>
-          ))}
-          {/* Duplicate copy — must be same container for seamless loop */}
-          {trustBadges.map((badge, idx) => (
-            <span
-              key={`b-${idx}`}
-              aria-hidden="true"
-              className="text-[10px] font-semibold text-text-body uppercase tracking-widest flex items-center gap-3 shrink-0"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-sage shrink-0" />
-              {badge}
-            </span>
-          ))}
+      <div className="py-8 bg-warm-white relative overflow-hidden">
+        <div className="mx-auto w-[94%] max-w-[1600px] bg-white/85 backdrop-blur-md border border-cream rounded-4xl overflow-hidden">
+          <div className="animate-marquee flex items-center gap-16 whitespace-nowrap w-max py-2.5">
+            {/* First copy */}
+            {trustBadges.map((badge, idx) => (
+              <span
+                key={`a-${idx}`}
+                className="text-[10px] font-semibold text-text-body uppercase tracking-widest flex items-center gap-3 shrink-0"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-sage shrink-0" />
+                {badge}
+              </span>
+            ))}
+            {/* Duplicate copy — must be same container for seamless loop */}
+            {trustBadges.map((badge, idx) => (
+              <span
+                key={`b-${idx}`}
+                aria-hidden="true"
+                className="text-[10px] font-semibold text-text-body uppercase tracking-widest flex items-center gap-3 shrink-0"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-sage shrink-0" />
+                {badge}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </>

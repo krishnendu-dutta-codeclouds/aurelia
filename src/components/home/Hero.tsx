@@ -158,7 +158,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen w-full flex items-center justify-center bg-cream overflow-hidden pt-16 md:pt-20"
+      className="relative min-h-screen w-full flex items-center justify-center bg-cream overflow-hidden py-24 md:py-32"
     >
       {/* Background Canvas (Image Sequence) */}
       <canvas
@@ -166,19 +166,23 @@ export default function Hero() {
         className="absolute inset-0 w-full h-full object-cover z-0"
       />
 
+      {/* Grain overlay (2026 tactility) */}
+      <div className="absolute inset-0 z-[5] pointer-events-none grain" />
+
       {/* Background Parallax Blob Glows */}
       <div
         ref={bgBlobRef}
         className="absolute inset-0 pointer-events-none z-10 will-change-transform"
       >
-        <div className="absolute top-[-10%] left-[-10%] w-[55%] h-[55%] rounded-full bg-gradient-to-tr from-[#FFF5F3] to-[#F1EAFF] blur-[120px] opacity-40" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[55%] h-[55%] rounded-full bg-gradient-to-br from-[#E2F0D9] to-[#FAF8FF] blur-[120px] opacity-35" />
+        <div className="absolute top-[-10%] left-[-10%] w-[55%] h-[55%] rounded-full bg-gradient-to-tr from-[#FFF5F3] to-[#F1EAFF] blur-[120px] opacity-40 animate-drift" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[55%] h-[55%] rounded-full bg-gradient-to-br from-[#E2F0D9] to-[#FAF8FF] blur-[120px] opacity-35 animate-drift" />
       </div>
+
 
       {/* Main Grid Content */}
       <div
         ref={contentRef}
-        className="w-full max-w-7xl mx-auto px-4 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-center relative z-20 h-full min-h-[80vh] will-change-transform"
+        className="w-full max-w-[1600px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-center relative z-20 h-full min-h-[80vh] will-change-transform"
       >
         {/* Left Column */}
         <div
@@ -242,61 +246,91 @@ export default function Hero() {
         {/* Center Column: Spacer — hidden on mobile, shown on md+ */}
         <div className="hidden md:block md:col-span-6 w-full h-[55vh] md:h-[75vh] pointer-events-none relative z-10" />
 
-        {/* Right Column: Brand narrative */}
+        {/* Right Column: Brand narrative (editorial 2026 redesign) */}
         <div
           ref={rightColRef}
-          className="md:col-span-3 flex flex-col items-center md:items-start text-center md:text-left gap-4 md:gap-8 z-20 md:pl-6 pb-8 md:pb-0"
+          className="md:col-span-3 flex flex-col items-center md:items-start text-center md:text-left gap-4 md:gap-7 z-20 md:pl-6 pb-8 md:pb-0"
         >
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[10px] md:text-xs uppercase tracking-widest text-white font-bold drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]"
+          {/* Oversized editorial headline */}
+          <motion.h1
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.05 }}
+            className="text-white text-[44px] md:text-[68px] lg:text-[84px] leading-[0.92] tracking-[-0.04em] font-serif italic drop-shadow-[0_2px_18px_rgba(0,0,0,0.45)]"
           >
-            Brand Philosophy
+            <span className="text-mask in">Glow</span>
+            <br />
+            <span className="text-mask in" style={{ transitionDelay: "120ms" }}>Beyond</span>
+            <br />
+            <span className="text-mask in" style={{ transitionDelay: "240ms" }}>Skin.</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.45 }}
+            className="text-[10px] md:text-[11px] uppercase tracking-[0.35em] text-white/85 font-semibold drop-shadow-[0_1px_4px_rgba(0,0,0,0.55)]"
+          >
+            <span className="text-mask in">Bio-Active Couture · 2026</span>
           </motion.p>
 
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="text-xs md:text-sm text-white/85 font-light leading-relaxed italic drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)] max-w-xs md:max-w-none"
+            transition={{ duration: 1.1, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
+            className="text-xs md:text-sm text-white/90 font-light leading-relaxed drop-shadow-[0_1px_6px_rgba(0,0,0,0.55)] max-w-xs md:max-w-none"
           >
-            &ldquo;Cutting-edge science, crafted with couture elegance — Aurelia
-            delivers a glow that feels as rare as it looks.&rdquo;
+            Cutting-edge bio-science, crafted with couture elegance — Aurelia
+            delivers a glow as rare as it looks.
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="w-12 h-px bg-white/40"
-          />
-
+          {/* Magnetic CTA */}
           <motion.a
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.5 }}
+            transition={{ duration: 1, delay: 0.7 }}
             href="#collection"
-            className="text-[10px] font-bold uppercase tracking-widest text-white/90 hover:text-white border-b border-white/30 hover:border-white pb-1 transition-colors duration-300 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]"
+            onMouseMove={(e) => {
+              const t = e.currentTarget as HTMLAnchorElement;
+              const r = t.getBoundingClientRect();
+              t.style.setProperty("--mx", `${e.clientX - r.left - r.width / 2}px`);
+              t.style.setProperty("--my", `${e.clientY - r.top - r.height / 2}px`);
+            }}
+            onMouseLeave={(e) => {
+              const t = e.currentTarget as HTMLAnchorElement;
+              t.style.setProperty("--mx", "0px");
+              t.style.setProperty("--my", "0px");
+            }}
+            className="magnetic group relative mt-3 inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-white text-text-title text-[11px] font-bold uppercase tracking-widest shadow-[0_12px_40px_rgba(0,0,0,0.18)] hover:shadow-[0_18px_50px_rgba(0,0,0,0.28)] transition-shadow shine-on-hover"
+            style={{ transform: "translate(var(--mx,0), var(--my,0))" }}
           >
-            Discover Formulas
+            <span>Discover Formulas</span>
+            <ArrowUpRight className="w-4 h-4 stroke-[1.8] group-hover:rotate-45 transition-transform duration-500" />
           </motion.a>
+
+          {/* Tiny confidence line */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.9 }}
+            className="flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-white/70 font-semibold drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]"
+          >
+            <span className="w-6 h-px bg-white/50" />
+            <span>Clinically tested · Vegan</span>
+          </motion.div>
         </div>
       </div>
 
-
-
-      {/* Floating Scroll Indicator */}
+      {/* Floating Scroll Indicator — modernized */}
       <div
         ref={scrollIndicatorRef}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none z-30"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 pointer-events-none z-30"
       >
-        <span className="text-[10px] uppercase tracking-widest text-white/70 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
-          Scroll to discover
+        <span className="text-[9px] uppercase tracking-[0.4em] text-white/80 drop-shadow-[0_1px_4px_rgba(0,0,0,0.55)] font-bold">
+          Scroll
         </span>
-        <div className="w-px h-12 bg-white/20 relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-1/2 bg-white/70 animate-bounce" />
+        <div className="relative w-px h-14 bg-white/20 overflow-hidden rounded-full">
+          <div className="absolute top-0 left-0 w-full h-1/2 bg-white/80 animate-bounce rounded-full" />
         </div>
       </div>
     </section>
