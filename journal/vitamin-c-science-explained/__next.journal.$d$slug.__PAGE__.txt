@@ -1,0 +1,31 @@
+1:"$Sreact.fragment"
+2:I[27852,["/aurelia/_next/static/chunks/0tyzgkq80zftq.js","/aurelia/_next/static/chunks/2c8t01846zuyg.js","/aurelia/_next/static/chunks/14mrh2-p_w84d.js","/aurelia/_next/static/chunks/4305in2_8gsxe.js","/aurelia/_next/static/chunks/2jjeca9198a8v.js"],"default"]
+4:I[97367,["/aurelia/_next/static/chunks/0tyzgkq80zftq.js","/aurelia/_next/static/chunks/2c8t01846zuyg.js","/aurelia/_next/static/chunks/14mrh2-p_w84d.js","/aurelia/_next/static/chunks/4305in2_8gsxe.js"],"OutletBoundary"]
+5:"$Sreact.suspense"
+3:T8a9,Vitamin C — ascorbic acid — is one of the most extensively studied topical antioxidants in dermatological science. Yet despite decades of research, it remains one of the most misunderstood ingredients on the market.
+
+**The Stability Problem**
+
+Pure L-ascorbic acid is inherently unstable. Exposed to air, light, or water, it oxidises rapidly — turning from a transparent serum into a discoloured, pro-oxidant compound that can actually *damage* skin instead of protecting it. This is the fundamental challenge every formulation chemist faces.
+
+Most brands solve this problem by adding chelating agents and keeping the pH below 3.5 — the range at which ascorbic acid remains relatively stable. The downside: pH 3.5 is deeply acidic, and many skin types — especially sensitised, rosacea-prone, or melanin-rich skin — cannot tolerate it without irritation.
+
+**Our Solution: Tetrahexyldecyl Ascorbate**
+
+Tetrahexyldecyl Ascorbate (THDC) is an oil-soluble, esterified form of Vitamin C. Unlike its water-soluble counterpart, THDC does not require an acidic pH environment to remain stable — it stays active at physiological pH (5.0–6.5) and resists oxidation for significantly longer.
+
+More importantly, THDC is lipid-soluble, meaning it penetrates the stratum corneum far more efficiently than L-ascorbic acid. Once inside the epidermis, it is enzymatically converted back to ascorbic acid exactly where it needs to work.
+
+**Clinical Implications**
+
+In an independent double-blind trial conducted across 62 participants over 12 weeks, THDC at 15% concentration demonstrated:
+- 38% reduction in surface melanin density
+- 44% improvement in measured luminosity (L* value, CIELAB)
+- 0 reported cases of contact sensitivity or irritation
+
+These numbers explain why we built the Aura Radiance Serum around THDC as its cornerstone active.
+
+**Pairing for Maximum Efficacy**
+
+THDC performs best when paired with Ferulic Acid (which doubles its antioxidant capacity) and Niacinamide (which suppresses melanin transfer without the instability risks of other brightening agents). Our precise 3:1:15 ratio of Niacinamide:Ferulic Acid:THDC took 14 months of iteration to arrive at — but the result speaks for itself.0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"article":{"slug":"vitamin-c-science-explained","title":"The Science of Vitamin C: Why Stability Changes Everything","excerpt":"Not all Vitamin C is created equal. We break down the chemistry of ascorbic acid stability, pH requirements, and why we chose Tetrahexyldecyl Ascorbate.","category":"Bio-Science","readingTime":6,"date":"2026-06-28","image":"/images/serum.png","author":{"name":"Dr. Camille Rousseau","role":"Head of Formulation"},"body":"$3"}}],[["$","script","script-0",{"src":"/aurelia/_next/static/chunks/2jjeca9198a8v.js","async":true}]],["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"iXO-KWiwLWwgSA4aSPtFt"}
+6:null

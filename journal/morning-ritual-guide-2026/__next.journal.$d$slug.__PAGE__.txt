@@ -1,0 +1,29 @@
+1:"$Sreact.fragment"
+2:I[27852,["/aurelia/_next/static/chunks/0tyzgkq80zftq.js","/aurelia/_next/static/chunks/2c8t01846zuyg.js","/aurelia/_next/static/chunks/14mrh2-p_w84d.js","/aurelia/_next/static/chunks/4305in2_8gsxe.js","/aurelia/_next/static/chunks/2jjeca9198a8v.js"],"default"]
+4:I[97367,["/aurelia/_next/static/chunks/0tyzgkq80zftq.js","/aurelia/_next/static/chunks/2c8t01846zuyg.js","/aurelia/_next/static/chunks/14mrh2-p_w84d.js","/aurelia/_next/static/chunks/4305in2_8gsxe.js"],"OutletBoundary"]
+5:"$Sreact.suspense"
+3:T711,The most sophisticated formulations in the world will underperform if applied in the wrong order. Layering skincare products is not arbitrary — it follows precise rules of molecular weight, pH compatibility, and absorption timing.
+
+**Step 01: Cleanse (Not included here, but essential)**
+Always begin with a clean canvas. Hard water minerals and residual product form a film that blocks active ingredient penetration by up to 60%.
+
+**Step 02: Botanical Harmony Toner (pH 5.5)**
+Apply within 60 seconds of cleansing while the skin is still slightly damp. The Toner's pH 5.5 formula restores the acid mantle disrupted by cleansing, while Willow Bark Extract initiates gentle BHA exfoliation. This step is not optional — it primes the acid mantle for optimal serum absorption.
+
+Wait: 30 seconds.
+
+**Step 03: Aura Radiance Serum (pH 3.2)**
+The serum's slightly acidic pH (3.2) drives THDC into the epidermis efficiently. Apply to slightly damp skin — a light hydration layer on the stratum corneum facilitates ingredient penetration. Use 3–4 drops, pressing (never dragging) upward from neck to forehead.
+
+Wait: 60 full seconds. This is the most skipped step and the most important. Rushing to layer moisturiser before the serum has absorbed will dilute its concentration and raise the effective pH, reducing efficacy.
+
+**Step 04: Luna Repair Cream (if used AM)**
+If using in the morning, apply a pea-sized amount as the final leave-on layer before SPF. Warm between fingertips to activate the lipid complex.
+
+**Step 05: SPF (not our product — but mandatory)**
+Vitamin C without SPF is a wasted ritual. Always finish with broad-spectrum SPF 30 or higher. Apply as the very last step, after all skincare has been absorbed.
+
+**Total Time: 5–7 minutes.**
+
+The ritual is not a luxury — it is a protocol.0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"article":{"slug":"morning-ritual-guide-2026","title":"The Aurelia Morning Ritual: A Step-by-Step Formulation Guide","excerpt":"Order matters. pH matters. Timing matters. Here is exactly how to layer our formulations for maximum clinical efficacy in your morning ritual.","category":"Ritual Guides","readingTime":5,"date":"2026-06-01","image":"/images/toner.png","author":{"name":"Anya Petrov","role":"Ritual Consultant"},"body":"$3"}}],[["$","script","script-0",{"src":"/aurelia/_next/static/chunks/2jjeca9198a8v.js","async":true}]],["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"iXO-KWiwLWwgSA4aSPtFt"}
+6:null

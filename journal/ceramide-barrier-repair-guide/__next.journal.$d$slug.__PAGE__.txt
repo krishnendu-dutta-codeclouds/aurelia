@@ -1,0 +1,27 @@
+1:"$Sreact.fragment"
+2:I[27852,["/aurelia/_next/static/chunks/0tyzgkq80zftq.js","/aurelia/_next/static/chunks/2c8t01846zuyg.js","/aurelia/_next/static/chunks/14mrh2-p_w84d.js","/aurelia/_next/static/chunks/4305in2_8gsxe.js","/aurelia/_next/static/chunks/2jjeca9198a8v.js"],"default"]
+4:I[97367,["/aurelia/_next/static/chunks/0tyzgkq80zftq.js","/aurelia/_next/static/chunks/2c8t01846zuyg.js","/aurelia/_next/static/chunks/14mrh2-p_w84d.js","/aurelia/_next/static/chunks/4305in2_8gsxe.js"],"OutletBoundary"]
+5:"$Sreact.suspense"
+3:T943,The stratum corneum — the outermost layer of the skin — functions as a sophisticated barrier system. Think of it as a brick wall: the corneocytes (skin cells) are the bricks, and the lipid matrix is the mortar that holds them together. Ceramides are the predominant lipid in that mortar, constituting approximately 50% of total stratum corneum lipids.
+
+When ceramide levels fall — through age, over-cleansing, UV damage, or genetic predisposition — the wall develops micro-cracks. Transepidermal water loss (TEWL) increases, irritants and allergens penetrate more freely, and the skin begins the cycle of dryness, sensitivity, and accelerated ageing.
+
+**The Three Ceramides in Luna Repair Cream**
+
+Not all ceramides are interchangeable. The human stratum corneum contains 342 structurally distinct ceramide species, grouped into 12 subclasses. Research has identified three as most critical for barrier restoration:
+
+*Ceramide NP (Non-hydroxy fatty acid, Phytosphingosine)*
+The most abundant subclass in healthy skin. NP ceramides occupy the lamellar bilayer structures between corneocytes and are primarily responsible for water retention. Topically, they penetrate readily and directly replenish depleted stores.
+
+*Ceramide AP (Alpha-hydroxy fatty acid, Phytosphingosine)*
+Found in deeper epidermal layers, AP ceramides contribute to the structural rigidity of the lamellar matrix. Clinical studies show that AP ceramide deficiency correlates strongly with atopic dermatitis and eczema.
+
+*Ceramide EOP (Esterified Omega-hydroxylated fatty acid, Phytosphingosine)*
+The rarest and most structurally unique subclass. EOP ceramides are esterified with linoleic acid and form the cornified envelope — essentially the outermost waterproofing layer. Replenishing EOP ceramides is uniquely effective at long-term TEWL reduction.
+
+**The Ratio Question**
+
+Our Luna Repair Cream delivers all three ceramides in a 3:1:1 molar ratio (NP:AP:EOP), which mirrors the natural proportion found in healthy 25–35 year old skin. This precision matters — applying ceramides in incorrect ratios can actually disrupt lamellar organisation rather than restore it.
+
+Combined with cold-pressed chia seed oil (rich in linoleic acid, the precursor to EOP ceramide synthesis) and Bakuchiol for cellular turnover stimulation, the result is measurable barrier restoration within 14 days.0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"article":{"slug":"ceramide-barrier-repair-guide","title":"The Ceramide Hierarchy: How to Actually Repair Your Skin Barrier","excerpt":"Your skin barrier is not just one thing — it is a complex lipid matrix. Understanding ceramide types NP, AP, and EOP is the first step to rebuilding it properly.","category":"Skin Education","readingTime":8,"date":"2026-06-14","image":"/images/cream.png","author":{"name":"Léa Fontaine","role":"Clinical Aesthetician"},"body":"$3"}}],[["$","script","script-0",{"src":"/aurelia/_next/static/chunks/2jjeca9198a8v.js","async":true}]],["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"iXO-KWiwLWwgSA4aSPtFt"}
+6:null
