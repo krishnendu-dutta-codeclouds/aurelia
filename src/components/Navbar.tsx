@@ -5,7 +5,7 @@ import { Search, Menu, X, ArrowRight, Heart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import ShoppingBagIcon from "@/components/icons/ShoppingBagIcon";
 import { useCartStore, useWishlistStore } from "@/lib/store";
 import SearchModal from "@/components/SearchModal";
@@ -17,8 +17,17 @@ export default function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const itemCount = useCartStore((s) => s.itemCount());
   const wishlistCount = useWishlistStore((s) => s.items.length);
+
+  const navLinks = [
+    { name: "SHOP", href: "/shop", isShop: true },
+    { name: "PHILOSOPHY", href: "/about" },
+    { name: "GALLERY", href: "/shop" },
+    { name: "JOURNAL", href: "/journal" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,7 +69,10 @@ export default function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        onMouseLeave={() => setShopOpen(false)}
+        onMouseLeave={() => {
+          setShopOpen(false);
+          setHoveredIndex(null);
+        }}
         className={`fixed top-4 left-1/2 -translate-x-1/2 w-[94%] max-w-[1600px] rounded-4xl z-40 transition-all duration-500 border bg-white/95 backdrop-blur-md border-cream px-6 ${scrolled || shopOpen ? "shadow-[0_12px_40px_rgba(0,0,0,0.06)] py-2" : "shadow-[0_4px_24px_rgba(0,0,0,0.04)] py-2"}`}
       >
         <div className="flex items-center justify-between w-full relative z-20">
@@ -78,34 +90,48 @@ export default function Navbar() {
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center gap-10">
-            <Link
-              href="/shop"
-              onMouseEnter={() => setShopOpen(true)}
-              onClick={() => setShopOpen(false)}
-              className="py-3 cursor-pointer block"
-            >
-              <span className={`text-xs font-bold uppercase tracking-widest transition-colors duration-300 relative py-1 ${shopOpen ? "text-sage" : "text-text-body hover:text-sage"}`}>
-                SHOP
-                <motion.span
-                  className="absolute bottom-0 left-0 w-full h-px bg-sage origin-left"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: shopOpen ? 1 : 0 }}
-                  transition={{ duration: 0.3 }}
-                />
-              </span>
-            </Link>
+            {navLinks.map((link, idx) => {
+              const isActive = pathname === link.href;
+              const isHovered = hoveredIndex === idx;
 
-            <Link href="/about" className="text-xs font-bold uppercase tracking-widest text-text-body hover:text-sage transition-colors py-1">
-              PHILOSOPHY
-            </Link>
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onMouseEnter={() => {
+                    setHoveredIndex(idx);
+                    if (link.isShop) {
+                      setShopOpen(true);
+                    } else {
+                      setShopOpen(false);
+                    }
+                  }}
+                  onClick={() => setShopOpen(false)}
+                  className="py-3 cursor-pointer block relative"
+                >
+                  <span className={`text-[11px] font-bold uppercase tracking-widest transition-colors duration-300 relative py-1 ${isActive || isHovered || (link.isShop && shopOpen) ? "text-sage" : "text-text-body hover:text-sage"}`}>
+                    {link.name}
 
-            <Link href="/shop" className="text-xs font-bold uppercase tracking-widest text-text-body hover:text-sage transition-colors py-1">
-              GALLERY
-            </Link>
+                    {/* Active/Hover sliding underline effect */}
+                    {isActive && (
+                      <motion.span
+                        layoutId="activeUnderline"
+                        className="absolute bottom-0 left-0 w-full h-px bg-sage"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
 
-            <Link href="/journal" className="text-xs font-bold uppercase tracking-widest text-text-body hover:text-sage transition-colors py-1">
-              JOURNAL
-            </Link>
+                    {isHovered && !isActive && (
+                      <motion.span
+                        layoutId="hoverUnderline"
+                        className="absolute bottom-0 left-0 w-full h-px bg-sage/40"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </span>
+                </Link>
+              );
+            })}
           </div>
 
           {/* Right Action Icons */}

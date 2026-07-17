@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -246,36 +247,54 @@ export default function Hero() {
           </div>
 
           {/* Rotating Explore SVG stamp — hidden on mobile */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, delay: 0.3 }}
-            className="hidden md:flex relative w-28 h-28 items-center justify-center cursor-pointer group"
-          >
-            <svg
-              viewBox="0 0 100 100"
-              className="w-full h-full animate-spin [animation-duration:12000ms] pointer-events-none"
+          <Link href="/shop" className="contents">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.2, delay: 0.3 }}
+              className="hidden md:block"
             >
-              <defs>
-                <path
-                  id="circlePath"
-                  d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0"
-                />
-              </defs>
-              <text
-                fill="rgba(255,255,255,0.85)"
-                className="text-[7.5px] font-bold tracking-[2.5px] uppercase"
+              <div
+                onMouseMove={(e) => {
+                  const t = e.currentTarget as HTMLDivElement;
+                  const r = t.getBoundingClientRect();
+                  t.style.setProperty("--mx", `${e.clientX - r.left - r.width / 2}px`);
+                  t.style.setProperty("--my", `${e.clientY - r.top - r.height / 2}px`);
+                }}
+                onMouseLeave={(e) => {
+                  const t = e.currentTarget as HTMLDivElement;
+                  t.style.setProperty("--mx", "0px");
+                  t.style.setProperty("--my", "0px");
+                }}
+                style={{ transform: "translate(var(--mx,0), var(--my,0))" }}
+                className="magnetic relative w-28 h-28 flex items-center justify-center cursor-pointer group"
               >
-                <textPath href="#circlePath">
-                  EXPLORE ALL PRODUCT · EXPLORE ALL PRODUCT ·{" "}
-                </textPath>
-              </text>
-            </svg>
+                <svg
+                  viewBox="0 0 100 100"
+                  className="w-full h-full animate-spin [animation-duration:12000ms] pointer-events-none"
+                >
+                  <defs>
+                    <path
+                      id="circlePath"
+                      d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0"
+                    />
+                  </defs>
+                  <text
+                    fill="rgba(255,255,255,0.85)"
+                    className="text-[7.5px] font-bold tracking-[2.5px] uppercase"
+                  >
+                    <textPath href="#circlePath">
+                      EXPLORE ALL PRODUCT · EXPLORE ALL PRODUCT ·{" "}
+                    </textPath>
+                  </text>
+                </svg>
 
-            <div className="absolute w-12 h-12 rounded-full bg-white border border-cream/50 flex items-center justify-center text-text-title group-hover:scale-110 group-hover:text-sage transition-all duration-300 shadow-md shadow-black/5">
-              <ArrowUpRight className="w-5 h-5 stroke-[1.5]" />
-            </div>
-          </motion.div>
+                <div className="absolute w-12 h-12 rounded-full bg-white border border-cream/50 flex items-center justify-center text-text-title group-hover:scale-110 group-hover:text-sage transition-all duration-300 shadow-md shadow-black/5">
+                  <ArrowUpRight className="w-5 h-5 stroke-[1.5]" />
+                </div>
+              </div>
+            </motion.div>
+          </Link>
         </div>
 
         {/* Center Column: Spacer — hidden on mobile, shown on md+ */}
@@ -320,28 +339,31 @@ export default function Hero() {
           </motion.p>
 
           {/* Magnetic CTA */}
-          <motion.a
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.7 }}
-            href="#collection"
-            onMouseMove={(e) => {
-              const t = e.currentTarget as HTMLAnchorElement;
-              const r = t.getBoundingClientRect();
-              t.style.setProperty("--mx", `${e.clientX - r.left - r.width / 2}px`);
-              t.style.setProperty("--my", `${e.clientY - r.top - r.height / 2}px`);
-            }}
-            onMouseLeave={(e) => {
-              const t = e.currentTarget as HTMLAnchorElement;
-              t.style.setProperty("--mx", "0px");
-              t.style.setProperty("--my", "0px");
-            }}
-            className="magnetic group relative mt-3 inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-white text-text-title text-[11px] font-bold uppercase tracking-widest shadow-[0_12px_40px_rgba(0,0,0,0.18)] hover:shadow-[0_18px_50px_rgba(0,0,0,0.28)] transition-shadow shine-on-hover"
-            style={{ transform: "translate(var(--mx,0), var(--my,0))" }}
           >
-            <span>Discover Formulas</span>
-            <ArrowUpRight className="w-4 h-4 stroke-[1.8] group-hover:rotate-45 transition-transform duration-500" />
-          </motion.a>
+            <a
+              href="#collection"
+              onMouseMove={(e) => {
+                const t = e.currentTarget as HTMLAnchorElement;
+                const r = t.getBoundingClientRect();
+                t.style.setProperty("--mx", `${e.clientX - r.left - r.width / 2}px`);
+                t.style.setProperty("--my", `${e.clientY - r.top - r.height / 2}px`);
+              }}
+              onMouseLeave={(e) => {
+                const t = e.currentTarget as HTMLAnchorElement;
+                t.style.setProperty("--mx", "0px");
+                t.style.setProperty("--my", "0px");
+              }}
+              className="magnetic group relative mt-3 inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-white text-text-title text-[11px] font-bold uppercase tracking-widest shadow-[0_12px_40px_rgba(0,0,0,0.18)] hover:shadow-[0_18px_50px_rgba(0,0,0,0.28)] transition-shadow shine-on-hover"
+              style={{ transform: "translate(var(--mx,0), var(--my,0))" }}
+            >
+              <span>Discover Formulas</span>
+              <ArrowUpRight className="w-4 h-4 stroke-[1.8] group-hover:rotate-45 transition-transform duration-500" />
+            </a>
+          </motion.div>
 
           {/* Tiny confidence line */}
           <motion.div
